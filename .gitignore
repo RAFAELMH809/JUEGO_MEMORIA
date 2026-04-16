@@ -1,0 +1,20 @@
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE/system
+.vscode/
+.idea/
+.DS_Store
+
+# Local runtime data
+*.log
+
+# Docker override/local artifacts
+docker-compose.override.yml
