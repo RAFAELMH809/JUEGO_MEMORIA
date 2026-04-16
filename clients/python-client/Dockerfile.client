@@ -1,0 +1,21 @@
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /client
+
+COPY requirements.txt /client/requirements.txt
+RUN pip install --no-cache-dir -r /client/requirements.txt
+
+COPY . /client
+
+RUN python -m grpc_tools.protoc \
+  -I /client/proto \
+  --python_out=/client/generated \
+  --grpc_python_out=/client/generated \
+  /client/proto/memory_game.proto
+
+ENV PYTHONPATH=/client:/client/generated
+
+ENTRYPOINT ["python", "/client/client.py"]

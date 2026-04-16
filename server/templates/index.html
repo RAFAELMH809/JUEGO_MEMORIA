@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ project_title }}</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape shape-a"></div>
+    <div class="bg-shape shape-b"></div>
+
+    <header class="topbar">
+      <div>
+        <h1>{{ project_title }}</h1>
+        <p class="subtitle">Panel administrativo del servidor</p>
+      </div>
+      <div class="status-pill" id="server-status">Servidor activo</div>
+    </header>
+
+    <main class="layout">
+      <section class="card" id="overview-card">
+        <h2>Estado General</h2>
+        <div class="metrics-grid">
+          <div class="metric">
+            <span>Partida</span>
+            <strong id="game-status">{{ snapshot.status }}</strong>
+          </div>
+          <div class="metric">
+            <span>Jugadores conectados</span>
+            <strong id="connected-players">{{ snapshot.connected_players }}</strong>
+          </div>
+          <div class="metric">
+            <span>Turno actual</span>
+            <strong id="current-turn">{{ snapshot.current_turn_player_name or "N/A" }}</strong>
+          </div>
+          <div class="metric">
+            <span>Parejas restantes</span>
+            <strong id="remaining-pairs">{{ snapshot.remaining_pairs }}</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="card board-card">
+        <h2>Tablero (Vista Admin con Emojis Reales)</h2>
+        <div class="board" id="board"></div>
+      </section>
+
+      <section class="card players-card">
+        <h2>Jugadores y Métricas</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>ID</th>
+                <th>Score</th>
+                <th>Movimientos</th>
+                <th>Parejas</th>
+                <th>Promedio (s)</th>
+                <th>Total (s)</th>
+                <th>Turno</th>
+              </tr>
+            </thead>
+            <tbody id="players-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Historial de Eventos</h2>
+        <div class="event-log" id="event-log"></div>
+      </section>
+
+      <section class="card">
+        <h2>Estadísticas y Ranking</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Jugador</th>
+                <th>Score</th>
+                <th>Movimientos</th>
+                <th>Promedio (s)</th>
+              </tr>
+            </thead>
+            <tbody id="ranking-tbody"></tbody>
+          </table>
+        </div>
+        <p id="winner-banner" class="winner-banner"></p>
+      </section>
+
+      <section class="card">
+        <h2>Historial de Partidas Guardadas</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Match ID</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Tablero</th>
+                <th>Ganadores</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="matches-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      window.__INITIAL_SNAPSHOT__ = {{ snapshot|tojson }};
+    </script>
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>

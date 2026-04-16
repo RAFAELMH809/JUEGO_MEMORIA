@@ -1,0 +1,23 @@
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+COPY server/requirements.txt /app/server/requirements.txt
+RUN pip install --no-cache-dir -r /app/server/requirements.txt
+
+COPY . /app
+
+RUN python -m grpc_tools.protoc \
+    -I /app/proto \
+    --python_out=/app/generated \
+    --grpc_python_out=/app/generated \
+    /app/proto/memory_game.proto
+
+ENV PYTHONPATH=/app:/app/generated
+
+EXPOSE 50051 8000
+
+CMD ["python", "/app/server/main.py"]

@@ -1,0 +1,188 @@
+syntax = "proto3";
+
+package memorygame;
+
+service MemoryGameService {
+  rpc JoinGame(JoinGameRequest) returns (JoinGameResponse);
+  rpc GetBoardState(BoardStateRequest) returns (BoardStateResponse);
+  rpc PlayTurn(PlayTurnRequest) returns (PlayTurnResponse);
+  rpc SubscribeToUpdates(SubscribeRequest) returns (stream GameUpdate);
+  rpc GetStats(StatsRequest) returns (StatsResponse);
+  rpc GetMatchHistory(MatchHistoryRequest) returns (MatchHistoryResponse);
+}
+
+enum GameStatus {
+  GAME_STATUS_UNSPECIFIED = 0;
+  WAITING_FOR_PLAYERS = 1;
+  IN_PROGRESS = 2;
+  FINISHED = 3;
+}
+
+enum EventType {
+  EVENT_TYPE_UNSPECIFIED = 0;
+  PLAYER_JOINED = 1;
+  GAME_STARTED = 2;
+  TURN_CHANGED = 3;
+  TURN_PLAYED = 4;
+  MATCH_FOUND = 5;
+  MISS_REVEALED = 6;
+  MISS_HIDDEN = 7;
+  GAME_OVER = 8;
+  STATS_UPDATED = 9;
+  FULL_STATE_SYNC = 10;
+  SYSTEM_MESSAGE = 11;
+}
+
+message Empty {}
+
+message Position {
+  int32 row = 1;
+  int32 col = 2;
+}
+
+message CellPublic {
+  int32 row = 1;
+  int32 col = 2;
+  bool is_revealed = 3;
+  bool is_matched = 4;
+  string value = 5;
+}
+
+message BoardPublicState {
+  int32 rows = 1;
+  int32 cols = 2;
+  repeated CellPublic cells = 3;
+  int32 total_pairs = 4;
+  int32 matched_pairs = 5;
+}
+
+message PlayerStats {
+  string player_id = 1;
+  string name = 2;
+  int32 score = 3;
+  int32 moves = 4;
+  int32 pairs_found = 5;
+  double total_response_time = 6;
+  double average_response_time = 7;
+  bool is_current_turn = 8;
+  repeated double response_times = 9;
+}
+
+message EventEntry {
+  string event_id = 1;
+  string timestamp = 2;
+  EventType event_type = 3;
+  string message = 4;
+  string actor_player_id = 5;
+}
+
+message GameSnapshot {
+  string match_id = 1;
+  GameStatus status = 2;
+  BoardPublicState board = 3;
+  repeated PlayerStats players = 4;
+  string current_turn_player_id = 5;
+  string current_turn_player_name = 6;
+  int32 connected_players = 7;
+  int32 min_players = 8;
+  bool game_over = 9;
+  repeated string winners = 10;
+  string started_at = 11;
+  string finished_at = 12;
+  int32 remaining_pairs = 13;
+}
+
+message JoinGameRequest {
+  string player_name = 1;
+}
+
+message JoinGameResponse {
+  bool accepted = 1;
+  string reason = 2;
+  string player_id = 3;
+  GameSnapshot snapshot = 4;
+}
+
+message BoardStateRequest {
+  string requester_player_id = 1;
+}
+
+message BoardStateResponse {
+  bool success = 1;
+  string reason = 2;
+  GameSnapshot snapshot = 3;
+}
+
+message PlayTurnRequest {
+  string player_id = 1;
+  Position first = 2;
+  Position second = 3;
+}
+
+message PlayTurnResponse {
+  bool accepted = 1;
+  string reason = 2;
+  bool matched = 3;
+  bool game_over = 4;
+  GameSnapshot snapshot = 5;
+  EventEntry event = 6;
+}
+
+message SubscribeRequest {
+  string player_id = 1;
+  string subscriber_name = 2;
+}
+
+message GameUpdate {
+  EventType event_type = 1;
+  string timestamp = 2;
+  string message = 3;
+  EventEntry event = 4;
+  GameSnapshot snapshot = 5;
+}
+
+message StatsRequest {
+  string match_id = 1;
+}
+
+message StatsResponse {
+  bool success = 1;
+  string reason = 2;
+  GameSnapshot snapshot = 3;
+  repeated PlayerStats ranking = 4;
+  repeated EventEntry recent_events = 5;
+}
+
+message MatchHistoryRequest {
+  string match_id = 1;
+  int32 limit = 2;
+}
+
+message StoredPlayerResult {
+  string player_id = 1;
+  string name = 2;
+  int32 score = 3;
+  int32 moves = 4;
+  int32 pairs_found = 5;
+  double total_response_time = 6;
+  double average_response_time = 7;
+  repeated double response_times = 8;
+}
+
+message StoredMatch {
+  string match_id = 1;
+  string started_at = 2;
+  string finished_at = 3;
+  int32 rows = 4;
+  int32 cols = 5;
+  string status = 6;
+  repeated string winners = 7;
+  repeated StoredPlayerResult players = 8;
+  repeated EventEntry events = 9;
+}
+
+message MatchHistoryResponse {
+  bool success = 1;
+  string reason = 2;
+  repeated StoredMatch matches = 3;
+}

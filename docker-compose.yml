@@ -1,0 +1,23 @@
+services:
+  memory-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: memory-grpc-server
+    ports:
+      - "50051:50051"
+      - "8000:8000"
+    environment:
+      GRPC_HOST: 0.0.0.0
+      GRPC_PORT: 50051
+      WEB_HOST: 0.0.0.0
+      WEB_PORT: 8000
+      MIN_PLAYERS: 2
+      BOARD_ROWS: 4
+      BOARD_COLS: 4
+      REVEAL_DELAY_SECONDS: 1.75
+      AUTO_START_ON_MIN_PLAYERS: "true"
+      GRPC_MAX_WORKERS: 32
+    volumes:
+      - ./server/data:/app/server/data
+    restart: unless-stopped
