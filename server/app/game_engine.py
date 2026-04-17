@@ -44,15 +44,14 @@ class GameEngine:
         self._current_turn_index: int = 0
         self._turn_started_monotonic: float = time.monotonic()
 
-        self._board_values = create_shuffled_board(settings.board_rows, settings.board_cols)
-        self._board_states = [
-            [HIDDEN for _ in range(settings.board_cols)] for _ in range(settings.board_rows)
-        ]
+        self._board_values: list[list[str]] = []
+        self._board_states: list[list[str]] = []
 
         self._pending_miss = False
         self._winners: list[str] = []
         self._persisted = False
         self._event_history: deque[dict[str, Any]] = deque(maxlen=settings.event_history_limit)
+        self._initialize_board_locked()
 
         self._add_system_event_locked(
             "SYSTEM_MESSAGE",
@@ -74,10 +73,21 @@ class GameEngine:
             }
 
         with self._lock:
-            if self._status != WAITING_FOR_PLAYERS:
+            if self._status == FINISHED:
+                self._reset_for_new_match_locked()
+
+            if self._status == IN_PROGRESS:
+                existing_player_id = self._find_player_id_by_name_locked(cleaned_name)
+                if existing_player_id:
+                    return {
+                        "accepted": True,
+                        "reason": "Jugador reconectado a la partida en curso",
+                        "player_id": existing_player_id,
+                        "snapshot": self._build_snapshot_locked(),
+                    }
                 return {
                     "accepted": False,
-                    "reason": "La partida ya comenzo o finalizo",
+                    "reason": "La partida ya comenzo. Espera a que termine para iniciar una nueva ronda.",
                     "player_id": "",
                     "snapshot": self._build_snapshot_locked(),
                 }
@@ -106,6 +116,44 @@ class GameEngine:
                 "player_id": player_id,
                 "snapshot": self._build_snapshot_locked(),
             }
+
+    def _find_player_id_by_name_locked(self, player_name: str) -> str:
+        lowered = player_name.strip().lower()
+        for player_id, player in self._players.items():
+            if player.name.strip().lower() == lowered:
+                return player_id
+        return ""
+
+    def _initialize_board_locked(self) -> None:
+        self._board_values = create_shuffled_board(
+            self.settings.board_rows,
+            self.settings.board_cols,
+        )
+        self._board_states = [
+            [HIDDEN for _ in range(self.settings.board_cols)]
+            for _ in range(self.settings.board_rows)
+        ]
+
+    def _reset_for_new_match_locked(self) -> None:
+        self._status = WAITING_FOR_PLAYERS
+        self._match_id = str(uuid.uuid4())
+        self._started_at = ""
+        self._finished_at = ""
+        self._players.clear()
+        self._player_order.clear()
+        self._current_turn_index = 0
+        self._turn_started_monotonic = time.monotonic()
+        self._pending_miss = False
+        self._winners = []
+        self._persisted = False
+        self._event_history.clear()
+        self._initialize_board_locked()
+
+        event = self._add_event_locked(
+            "SYSTEM_MESSAGE",
+            f"Nueva partida creada. Esperando al menos {self.settings.min_players} jugadores.",
+        )
+        self._publish_update_locked(event)
 
     def get_snapshot(self) -> dict[str, Any]:
         with self._lock:
