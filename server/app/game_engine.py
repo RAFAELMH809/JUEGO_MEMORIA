@@ -38,6 +38,8 @@ class GameEngine:
         self._match_id = str(uuid.uuid4())
         self._started_at = ""
         self._finished_at = ""
+        self._board_rows = settings.board_rows
+        self._board_cols = settings.board_cols
 
         self._players: dict[str, Player] = {}
         self._player_order: list[str] = []
@@ -48,6 +50,7 @@ class GameEngine:
         self._board_states: list[list[str]] = []
 
         self._pending_miss = False
+        self._pending_first_pick: dict[str, tuple[int, int]] = {}
         self._winners: list[str] = []
         self._persisted = False
         self._event_history: deque[dict[str, Any]] = deque(maxlen=settings.event_history_limit)
@@ -92,6 +95,14 @@ class GameEngine:
                     "snapshot": self._build_snapshot_locked(),
                 }
 
+            if len(self._player_order) >= self.settings.max_players:
+                return {
+                    "accepted": False,
+                    "reason": f"La sala esta llena (maximo {self.settings.max_players} jugadores)",
+                    "player_id": "",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
             player_id = str(uuid.uuid4())
             player = Player(player_id=player_id, name=cleaned_name)
             self._players[player_id] = player
@@ -103,6 +114,8 @@ class GameEngine:
                 actor_player_id=player_id,
             )
             self._publish_update_locked(event)
+
+            self._adapt_board_size_for_waiting_locked()
 
             if (
                 self.settings.auto_start_on_min_players
@@ -117,6 +130,111 @@ class GameEngine:
                 "snapshot": self._build_snapshot_locked(),
             }
 
+    def admin_start_game(self) -> dict[str, Any]:
+        with self._lock:
+            if self._status == IN_PROGRESS:
+                return {
+                    "success": False,
+                    "reason": "La partida ya esta en curso",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            if len(self._player_order) < self.settings.min_players:
+                return {
+                    "success": False,
+                    "reason": f"Se requieren al menos {self.settings.min_players} jugadores",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            if self._status == FINISHED:
+                self._reset_for_new_match_locked()
+                return {
+                    "success": False,
+                    "reason": "Partida finalizada. Registra jugadores para la nueva ronda",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            self._start_game_locked()
+            return {
+                "success": True,
+                "reason": "Partida iniciada por administrador",
+                "snapshot": self._build_snapshot_locked(),
+            }
+
+    def admin_reset_match(self) -> dict[str, Any]:
+        with self._lock:
+            self._reset_for_new_match_locked()
+            return {
+                "success": True,
+                "reason": "Partida reiniciada por administrador",
+                "snapshot": self._build_snapshot_locked(),
+            }
+
+    def preview_first_pick(self, player_id: str, row: int, col: int) -> dict[str, Any]:
+        with self._lock:
+            if self._status != IN_PROGRESS:
+                return {
+                    "success": False,
+                    "reason": "La partida aun no ha iniciado",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            if self._pending_miss:
+                return {
+                    "success": False,
+                    "reason": "Espera a que termine la jugada actual",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            if player_id not in self._players:
+                return {
+                    "success": False,
+                    "reason": "Jugador no registrado",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            expected_player_id = self._player_order[self._current_turn_index]
+            if player_id != expected_player_id:
+                expected_name = self._players[expected_player_id].name
+                return {
+                    "success": False,
+                    "reason": f"No es tu turno. Turno actual: {expected_name}",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            if not self._is_valid_position(row, col):
+                return {
+                    "success": False,
+                    "reason": "Coordenadas fuera de rango",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            if self._board_states[row][col] == MATCHED:
+                return {
+                    "success": False,
+                    "reason": "No puedes elegir una carta ya emparejada",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            existing = self._pending_first_pick.get(player_id)
+            if existing and existing != (row, col):
+                return {
+                    "success": False,
+                    "reason": "Ya elegiste la primera carta. Selecciona la segunda.",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            self._pending_first_pick[player_id] = (row, col)
+
+            return {
+                "success": True,
+                "reason": "Primera carta seleccionada",
+                "row": row,
+                "col": col,
+                "value": self._board_values[row][col],
+                "snapshot": self._build_snapshot_locked(),
+            }
+
     def _find_player_id_by_name_locked(self, player_name: str) -> str:
         lowered = player_name.strip().lower()
         for player_id, player in self._players.items():
@@ -126,13 +244,36 @@ class GameEngine:
 
     def _initialize_board_locked(self) -> None:
         self._board_values = create_shuffled_board(
-            self.settings.board_rows,
-            self.settings.board_cols,
+            self._board_rows,
+            self._board_cols,
         )
         self._board_states = [
-            [HIDDEN for _ in range(self.settings.board_cols)]
-            for _ in range(self.settings.board_rows)
+            [HIDDEN for _ in range(self._board_cols)]
+            for _ in range(self._board_rows)
         ]
+
+    def _suggest_board_size_by_players_locked(self) -> tuple[int, int]:
+        count = len(self._player_order)
+        if count <= 2:
+            return (4, 4)
+        if count == 3:
+            return (6, 6)
+        return (8, 8)
+
+    def _adapt_board_size_for_waiting_locked(self) -> None:
+        if self._status != WAITING_FOR_PLAYERS:
+            return
+        rows, cols = self._suggest_board_size_by_players_locked()
+        if (rows, cols) == (self._board_rows, self._board_cols):
+            return
+
+        self._board_rows, self._board_cols = rows, cols
+        self._initialize_board_locked()
+        event = self._add_event_locked(
+            "SYSTEM_MESSAGE",
+            f"Tamano de tablero ajustado a {rows}x{cols} para {len(self._player_order)} jugadores en sala.",
+        )
+        self._publish_update_locked(event)
 
     def _reset_for_new_match_locked(self) -> None:
         self._status = WAITING_FOR_PLAYERS
@@ -144,6 +285,7 @@ class GameEngine:
         self._current_turn_index = 0
         self._turn_started_monotonic = time.monotonic()
         self._pending_miss = False
+        self._pending_first_pick.clear()
         self._winners = []
         self._persisted = False
         self._event_history.clear()
@@ -229,8 +371,24 @@ class GameEngine:
 
     def play_turn(self, player_id: str, first: tuple[int, int], second: tuple[int, int]) -> dict[str, Any]:
         with self._lock:
+            pending_first = self._pending_first_pick.get(player_id)
+            if pending_first and pending_first != first:
+                return {
+                    "accepted": False,
+                    "reason": "La primera carta no coincide con tu seleccion previa.",
+                    "matched": False,
+                    "game_over": self._status == FINISHED,
+                    "snapshot": self._build_snapshot_locked(),
+                    "event": self._add_event_locked(
+                        "SYSTEM_MESSAGE",
+                        f"Turno rechazado para jugador {player_id}: primera carta invalida",
+                        actor_player_id=player_id,
+                    ),
+                }
+
             validation_error = self._validate_turn_locked(player_id, first, second)
             if validation_error:
+                self._pending_first_pick.pop(player_id, None)
                 return {
                     "accepted": False,
                     "reason": validation_error,
@@ -281,6 +439,7 @@ class GameEngine:
 
                 self._board_states[first_row][first_col] = MATCHED
                 self._board_states[second_row][second_col] = MATCHED
+                self._pending_first_pick.pop(player_id, None)
 
                 match_event = self._add_event_locked(
                     "MATCH_FOUND",
@@ -335,6 +494,7 @@ class GameEngine:
             )
 
             self._pending_miss = True
+            self._pending_first_pick.pop(player_id, None)
             next_turn_index = (self._current_turn_index + 1) % len(self._player_order)
             miss_event = self._add_event_locked(
                 "MISS_REVEALED",
@@ -388,6 +548,7 @@ class GameEngine:
             self._current_turn_index = next_turn_index
             self._turn_started_monotonic = time.monotonic()
             self._pending_miss = False
+            self._pending_first_pick.clear()
 
             current_player = self._players[self._player_order[self._current_turn_index]]
             hide_event = self._add_event_locked(
@@ -442,7 +603,7 @@ class GameEngine:
         return ""
 
     def _is_valid_position(self, row: int, col: int) -> bool:
-        return 0 <= row < self.settings.board_rows and 0 <= col < self.settings.board_cols
+        return 0 <= row < self._board_rows and 0 <= col < self._board_cols
 
     def _start_game_locked(self) -> None:
         if self._status != WAITING_FOR_PLAYERS:
@@ -481,7 +642,7 @@ class GameEngine:
         self._winners = winners
 
     def _all_pairs_found_locked(self) -> bool:
-        for row, col in flatten_board(self.settings.board_rows, self.settings.board_cols):
+        for row, col in flatten_board(self._board_rows, self._board_cols):
             if self._board_states[row][col] != MATCHED:
                 return False
         return True
@@ -489,7 +650,7 @@ class GameEngine:
     def _public_board_locked(self) -> dict[str, Any]:
         cells: list[dict[str, Any]] = []
         matched_pairs = 0
-        for row, col in flatten_board(self.settings.board_rows, self.settings.board_cols):
+        for row, col in flatten_board(self._board_rows, self._board_cols):
             state = self._board_states[row][col]
             value = self._board_values[row][col] if state in {REVEALED, MATCHED} else HIDDEN_MARKER
             if state == MATCHED:
@@ -504,10 +665,10 @@ class GameEngine:
                 }
             )
 
-        total_pairs = (self.settings.board_rows * self.settings.board_cols) // 2
+        total_pairs = (self._board_rows * self._board_cols) // 2
         return {
-            "rows": self.settings.board_rows,
-            "cols": self.settings.board_cols,
+            "rows": self._board_rows,
+            "cols": self._board_cols,
             "cells": cells,
             "total_pairs": total_pairs,
             "matched_pairs": matched_pairs // 2,
@@ -517,7 +678,7 @@ class GameEngine:
         """Vista del tablero para administracion: siempre muestra emoji real."""
         cells: list[dict[str, Any]] = []
         matched_pairs = 0
-        for row, col in flatten_board(self.settings.board_rows, self.settings.board_cols):
+        for row, col in flatten_board(self._board_rows, self._board_cols):
             state = self._board_states[row][col]
             if state == MATCHED:
                 matched_pairs += 1
@@ -531,10 +692,10 @@ class GameEngine:
                 }
             )
 
-        total_pairs = (self.settings.board_rows * self.settings.board_cols) // 2
+        total_pairs = (self._board_rows * self._board_cols) // 2
         return {
-            "rows": self.settings.board_rows,
-            "cols": self.settings.board_cols,
+            "rows": self._board_rows,
+            "cols": self._board_cols,
             "cells": cells,
             "total_pairs": total_pairs,
             "matched_pairs": matched_pairs // 2,
@@ -564,11 +725,13 @@ class GameEngine:
             "current_turn_player_name": current_player_name,
             "connected_players": len(self._player_order),
             "min_players": self.settings.min_players,
+            "max_players": self.settings.max_players,
             "game_over": self._status == FINISHED,
             "winners": self._winners,
             "started_at": self._started_at,
             "finished_at": self._finished_at,
             "remaining_pairs": remaining_pairs,
+            "board_recommendation": f"{self._board_rows}x{self._board_cols}",
         }
 
     def _ranking_locked(self) -> list[dict[str, Any]]:
@@ -636,8 +799,8 @@ class GameEngine:
             "match_id": self._match_id,
             "started_at": self._started_at,
             "finished_at": self._finished_at,
-            "rows": self.settings.board_rows,
-            "cols": self.settings.board_cols,
+            "rows": self._board_rows,
+            "cols": self._board_cols,
             "status": self._status,
             "winners": self._winners,
             "players": [

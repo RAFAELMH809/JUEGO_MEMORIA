@@ -32,12 +32,15 @@
           <div><span>Turno</span><strong id="current-turn">{{ snapshot.current_turn_player_name or "N/A" }}</strong></div>
           <div><span>Parejas restantes</span><strong id="remaining-pairs">{{ snapshot.remaining_pairs }}</strong></div>
           <div><span>Conectados</span><strong id="connected-players">{{ snapshot.connected_players }}</strong></div>
+          <div><span>Limite de jugadores</span><strong id="max-players">{{ snapshot.max_players or 4 }}</strong></div>
+          <div><span>Tablero sugerido</span><strong id="board-recommendation">{{ snapshot.board_recommendation or "4x4" }}</strong></div>
         </div>
       </section>
 
       <section class="card board-card">
+        <div class="turn-banner" id="turn-banner">Turno actual: {{ snapshot.current_turn_player_name or "N/A" }}</div>
         <h2>Tablero de Juego</h2>
-        <p class="hint">Selecciona 2 tarjetas por turno. Solo se muestran tus revelaciones temporales y parejas encontradas.</p>
+        <p class="hint">Da clic en una carta para voltearla y luego en la segunda. Si no es pareja se ocultan; si aciertas, ganas punto y repites turno.</p>
         <div id="board" class="board"></div>
       </section>
 
@@ -64,6 +67,13 @@
         <div id="event-log" class="event-log"></div>
       </section>
     </main>
+
+    <div id="winner-overlay" class="winner-overlay hidden">
+      <div class="winner-card">
+        <h2 id="winner-title">Ganador</h2>
+        <p id="winner-text"></p>
+      </div>
+    </div>
 
     <script>
       globalThis.__INITIAL_SNAPSHOT__ = {{ snapshot|tojson }};

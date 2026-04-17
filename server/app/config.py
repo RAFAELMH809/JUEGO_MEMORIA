@@ -12,10 +12,11 @@ class Settings:
     web_host: str = "0.0.0.0"
     web_port: int = 8000
     min_players: int = 2
+    max_players: int = 4
     board_rows: int = 4
     board_cols: int = 4
     reveal_delay_seconds: float = 1.75
-    auto_start_on_min_players: bool = True
+    auto_start_on_min_players: bool = False
     max_workers: int = 32
     data_dir: Path = Path(__file__).resolve().parents[1] / "data"
     history_file_name: str = "matches_history.json"
@@ -39,11 +40,12 @@ def load_settings() -> Settings:
         web_host=os.getenv("WEB_HOST", "0.0.0.0"),
         web_port=int(os.getenv("WEB_PORT", "8000")),
         min_players=int(os.getenv("MIN_PLAYERS", "2")),
+        max_players=int(os.getenv("MAX_PLAYERS", "4")),
         board_rows=int(os.getenv("BOARD_ROWS", "4")),
         board_cols=int(os.getenv("BOARD_COLS", "4")),
         reveal_delay_seconds=float(os.getenv("REVEAL_DELAY_SECONDS", "1.75")),
         auto_start_on_min_players=_parse_bool(
-            os.getenv("AUTO_START_ON_MIN_PLAYERS"), True
+            os.getenv("AUTO_START_ON_MIN_PLAYERS"), False
         ),
         max_workers=int(os.getenv("GRPC_MAX_WORKERS", "32")),
     )
@@ -64,6 +66,12 @@ def validate_settings(settings: Settings) -> None:
 
     if settings.min_players < 2:
         raise ValueError("MIN_PLAYERS debe ser al menos 2")
+
+    if settings.max_players < settings.min_players:
+        raise ValueError("MAX_PLAYERS debe ser mayor o igual a MIN_PLAYERS")
+
+    if settings.max_players > 4:
+        raise ValueError("MAX_PLAYERS no puede ser mayor que 4 para esta practica")
 
     if settings.reveal_delay_seconds <= 0:
         raise ValueError("REVEAL_DELAY_SECONDS debe ser mayor que cero")

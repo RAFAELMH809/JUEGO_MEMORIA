@@ -13,10 +13,11 @@ services:
       WEB_HOST: 0.0.0.0
       WEB_PORT: 8000
       MIN_PLAYERS: 2
+      MAX_PLAYERS: 4
       BOARD_ROWS: 4
       BOARD_COLS: 4
       REVEAL_DELAY_SECONDS: 1.75
-      AUTO_START_ON_MIN_PLAYERS: "true"
+      AUTO_START_ON_MIN_PLAYERS: "false"
       GRPC_MAX_WORKERS: 32
     volumes:
       - ./server/data:/app/server/data

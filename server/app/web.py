@@ -30,6 +30,12 @@ class PlayPayload(BaseModel):
     second_col: int
 
 
+class PreviewPayload(BaseModel):
+    player_id: str = Field(min_length=1)
+    row: int
+    col: int
+
+
 def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
     app = FastAPI(
         title="Memory Game Distributed Server",
@@ -90,6 +96,25 @@ def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
         )
         if not result["accepted"]:
             raise HTTPException(status_code=400, detail=result["reason"])
+        return JSONResponse(result)
+
+    @app.post("/api/preview", response_class=JSONResponse)
+    async def api_preview(payload: PreviewPayload) -> JSONResponse:
+        result = engine.preview_first_pick(payload.player_id, payload.row, payload.col)
+        if not result["success"]:
+            raise HTTPException(status_code=400, detail=result["reason"])
+        return JSONResponse(result)
+
+    @app.post("/api/admin/start", response_class=JSONResponse)
+    async def api_admin_start() -> JSONResponse:
+        result = engine.admin_start_game()
+        if not result["success"]:
+            raise HTTPException(status_code=400, detail=result["reason"])
+        return JSONResponse(result)
+
+    @app.post("/api/admin/reset", response_class=JSONResponse)
+    async def api_admin_reset() -> JSONResponse:
+        result = engine.admin_reset_match()
         return JSONResponse(result)
 
     @app.get("/api/stats", response_class=JSONResponse)

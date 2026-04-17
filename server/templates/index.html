@@ -21,6 +21,11 @@
     <main class="layout">
       <section class="card" id="overview-card">
         <h2>Estado General</h2>
+        <div class="admin-actions">
+          <button id="admin-start-btn" class="btn btn-primary">Iniciar Partida</button>
+          <button id="admin-reset-btn" class="btn btn-danger">Reiniciar Partida</button>
+          <span id="admin-action-status" class="hint"></span>
+        </div>
         <div class="metrics-grid">
           <div class="metric">
             <span>Partida</span>
@@ -37,6 +42,18 @@
           <div class="metric">
             <span>Parejas restantes</span>
             <strong id="remaining-pairs">{{ snapshot.remaining_pairs }}</strong>
+          </div>
+          <div class="metric">
+            <span>Min jugadores</span>
+            <strong id="min-players">{{ snapshot.min_players }}</strong>
+          </div>
+          <div class="metric">
+            <span>Max jugadores</span>
+            <strong id="max-players">{{ snapshot.max_players or 4 }}</strong>
+          </div>
+          <div class="metric">
+            <span>Tablero recomendado</span>
+            <strong id="board-recommendation">{{ snapshot.board_recommendation or "4x4" }}</strong>
           </div>
         </div>
       </section>
@@ -112,7 +129,7 @@
     </main>
 
     <script>
-      window.__INITIAL_SNAPSHOT__ = {{ snapshot|tojson }};
+      globalThis.__INITIAL_SNAPSHOT__ = {{ snapshot|tojson }};
     </script>
     <script src="/static/js/app.js"></script>
   </body>

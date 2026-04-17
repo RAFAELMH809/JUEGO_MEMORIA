@@ -132,31 +132,79 @@ body {
 }
 
 .cell {
+  position: relative;
+  perspective: 800px;
   border: 1px solid var(--line);
   border-radius: 10px;
-  min-height: 48px;
+  min-height: 64px;
   display: grid;
   place-items: center;
-  background: #f8fbfa;
-  font-size: 1.28rem;
-  font-weight: 600;
+  background: transparent;
   cursor: pointer;
   user-select: none;
+  padding: 0;
 }
 
-.cell.selected {
+.cell-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 9px;
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease;
+}
+
+.cell.flipped .cell-inner {
+  transform: rotateY(180deg);
+}
+
+.cell-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  backface-visibility: hidden;
+  border: 1px solid var(--line);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.cell-front {
+  background: #f8fbfa;
+  color: #32505c;
+}
+
+.cell-back {
+  transform: rotateY(180deg);
+  background: #ecfdf5;
+}
+
+.cell.selected .cell-front {
   outline: 2px solid var(--warn);
   background: #fff7ed;
 }
 
-.cell.revealed {
-  background: #ecfdf5;
+.cell.revealed .cell-back {
+  background: #d1fae5;
 }
 
-.cell.matched {
-  background: #dcfce7;
+.cell.matched .cell-back {
+  background: #bbf7d0;
   color: var(--ok);
+}
+
+.cell:disabled {
   cursor: not-allowed;
+}
+
+.turn-banner {
+  margin-bottom: 10px;
+  border: 1px solid #99f6e4;
+  background: #f0fdfa;
+  color: #134e4a;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 700;
 }
 
 .table-wrap {
@@ -187,6 +235,56 @@ td {
   border-radius: 10px;
   padding: 8px;
   background: #fbfdfd;
+}
+
+.winner-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.65);
+  display: grid;
+  place-items: center;
+  z-index: 30;
+  animation: fadeIn 0.3s ease;
+}
+
+.winner-overlay.hidden {
+  display: none;
+}
+
+.winner-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  min-width: min(92vw, 460px);
+  text-align: center;
+  border: 1px solid #bbf7d0;
+  box-shadow: 0 16px 36px rgba(16, 32, 40, 0.32);
+  animation: popIn 0.35s ease;
+}
+
+.winner-card h2 {
+  margin: 0 0 8px;
+  color: #14532d;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (min-width: 1100px) {

@@ -1,5 +1,5 @@
 const state = {
-  snapshot: window.__INITIAL_SNAPSHOT__ || null,
+  snapshot: globalThis.__INITIAL_SNAPSHOT__ || null,
   events: [],
   ranking: [],
   history: []
@@ -10,12 +10,18 @@ const el = {
   connectedPlayers: document.getElementById("connected-players"),
   currentTurn: document.getElementById("current-turn"),
   remainingPairs: document.getElementById("remaining-pairs"),
+  minPlayers: document.getElementById("min-players"),
+  maxPlayers: document.getElementById("max-players"),
+  boardRecommendation: document.getElementById("board-recommendation"),
   board: document.getElementById("board"),
   playersTbody: document.getElementById("players-tbody"),
   rankingTbody: document.getElementById("ranking-tbody"),
   eventLog: document.getElementById("event-log"),
   matchesTbody: document.getElementById("matches-tbody"),
-  winnerBanner: document.getElementById("winner-banner")
+  winnerBanner: document.getElementById("winner-banner"),
+  adminStartBtn: document.getElementById("admin-start-btn"),
+  adminResetBtn: document.getElementById("admin-reset-btn"),
+  adminActionStatus: document.getElementById("admin-action-status")
 };
 
 function shortId(id) {
@@ -111,6 +117,9 @@ function renderSnapshot(snapshot) {
   el.connectedPlayers.textContent = snapshot.connected_players;
   el.currentTurn.textContent = snapshot.current_turn_player_name || "N/A";
   el.remainingPairs.textContent = snapshot.remaining_pairs;
+  el.minPlayers.textContent = snapshot.min_players;
+  el.maxPlayers.textContent = snapshot.max_players || 4;
+  el.boardRecommendation.textContent = snapshot.board_recommendation || `${snapshot.board.rows}x${snapshot.board.cols}`;
 
   renderBoard(snapshot.admin_board || snapshot.board);
   renderPlayers(snapshot.players || []);
@@ -160,9 +169,40 @@ function connectEvents() {
   };
 }
 
-(async function init() {
+async function runAdminAction(url, successMessage) {
+  try {
+    const response = await fetch(url, { method: "POST" });
+    if (!response.ok) {
+      const payload = await response.json();
+      el.adminActionStatus.textContent = payload.detail || "No se pudo ejecutar la accion";
+      return;
+    }
+
+    const payload = await response.json();
+    el.adminActionStatus.textContent = payload.reason || successMessage;
+    if (payload.snapshot) {
+      renderSnapshot(payload.snapshot);
+    }
+  } catch (error) {
+    console.error("admin action failed", error);
+    el.adminActionStatus.textContent = "Error de red al ejecutar accion admin";
+  }
+}
+
+function init() {
   renderSnapshot(state.snapshot);
-  await refreshStatsAndHistory();
+  refreshStatsAndHistory().catch(() => {
+    el.adminActionStatus.textContent = "No se pudo actualizar stats/historial";
+  });
   connectEvents();
   setInterval(refreshStatsAndHistory, 5000);
-})();
+
+  el.adminStartBtn.addEventListener("click", () => {
+    void runAdminAction("/api/admin/start", "Partida iniciada");
+  });
+  el.adminResetBtn.addEventListener("click", () => {
+    void runAdminAction("/api/admin/reset", "Partida reiniciada");
+  });
+}
+
+init();
