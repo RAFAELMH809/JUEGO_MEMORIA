@@ -227,6 +227,41 @@ class GameEngine:
                 "snapshot": self._build_snapshot_locked(),
             }
 
+    def admin_remove_player(self, player_id: str) -> dict[str, Any]:
+        with self._lock:
+            if self._status != WAITING_FOR_PLAYERS:
+                return {
+                    "success": False,
+                    "reason": "Solo puedes quitar jugadores antes de iniciar la partida",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            if player_id not in self._players:
+                return {
+                    "success": False,
+                    "reason": "Jugador no encontrado en la sala",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            removed = self._players.pop(player_id)
+            self._player_order = [pid for pid in self._player_order if pid != player_id]
+            self._pending_first_pick.pop(player_id, None)
+
+            self._adapt_board_size_for_waiting_locked()
+
+            event = self._add_event_locked(
+                "SYSTEM_MESSAGE",
+                f"Admin removio al jugador {removed.name} de la sala.",
+                actor_player_id=player_id,
+            )
+            self._publish_update_locked(event)
+
+            return {
+                "success": True,
+                "reason": f"Jugador {removed.name} removido",
+                "snapshot": self._build_snapshot_locked(),
+            }
+
     def preview_first_pick(self, player_id: str, row: int, col: int) -> dict[str, Any]:
         with self._lock:
             if self._status != IN_PROGRESS:

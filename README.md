@@ -291,6 +291,7 @@ La arquitectura ya esta lista para 3+ clientes concurrentes, incluyendo desplieg
 - `POST /api/admin/reset` reinicio total de ronda por administrador
 - `POST /api/admin/board-size` seleccion manual de tablero (`4`, `6`, `8`)
 - `POST /api/admin/board-size/auto` volver a modo automatico por cantidad de jugadores
+- `POST /api/admin/remove-player` quitar jugador antes de iniciar partida
 - `GET /api/stats` estadisticas y ranking
 - `GET /api/history` historial persistido
 
@@ -382,7 +383,10 @@ Nota de red:
 3. Mientras el estado es `WAITING_FOR_PLAYERS`, el admin puede:
   - iniciar partida manualmente,
   - reiniciar sala,
+  - cambiar tamano de tablero (manual o automatico),
   - quitar jugadores puntuales.
+
+Nota: la vista de jugadores (`/`) no muestra boton ni enlace al panel admin; el acceso administrativo es directo por URL (`/admin`).
 
 ### Tamano de tablero por cantidad de jugadores
 
@@ -457,3 +461,17 @@ Usa esta estructura para que el equipo pueda documentar rapido:
 - [x] arquitectura y decisiones documentadas
 - [x] pasos de ejecucion local/Docker
 - [x] checklist para reporte PDF
+
+## 18. Matriz de evaluacion (rubrica -> evidencia)
+
+| Criterio de rubrica | Evidencia en este proyecto |
+| --- | --- |
+| Configuracion gRPC y arquitectura | `proto/memory_game.proto`, `server/app/grpc_server.py`, `server/app/game_engine.py` |
+| Manejo multiusuario y concurrencia | `threading.Lock`, broadcaster por colas en `server/app/broadcaster.py`, estado compartido en `server/app/game_engine.py` |
+| Reglas del juego y turnos | RPC `PlayTurn`, control de turno, match/miss, `pending_miss`, fin de juego en `server/app/game_engine.py` |
+| Sincronizacion en tiempo real | `SubscribeToUpdates` (gRPC stream), `GET /events` y `GET /events/admin` (SSE) |
+| Panel de administracion y control de sala | `GET /admin`, `POST /api/admin/start`, `POST /api/admin/reset`, `POST /api/admin/board-size`, `POST /api/admin/board-size/auto`, `POST /api/admin/remove-player` |
+| Cliente funcional (web y CLI) | `server/templates/play.html`, `server/static/js/play.js`, `clients/python-client/client.py` |
+| Persistencia e historico | `server/app/storage.py`, `server/data/matches_history.json`, `GetMatchHistory`, `GET /api/history` |
+| Despliegue y portabilidad | `docker-compose.yml`, `Dockerfile.server`, puertos `50051` y `8000`, soporte LAN |
+| Documentacion y evidencia final | secciones 1-17 de este README + guia de reporte PDF (seccion 16) |

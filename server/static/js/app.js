@@ -79,10 +79,25 @@ function renderPlayers(players) {
         <td>${Number(p.average_response_time).toFixed(3)}</td>
         <td>${Number(p.total_response_time).toFixed(3)}</td>
         <td>${p.is_current_turn ? "Si" : "No"}</td>
+        <td>
+          ${
+            state.snapshot?.status === "WAITING_FOR_PLAYERS"
+              ? `<button class="btn btn-danger btn-sm remove-player-btn" data-player-id="${p.player_id}">Quitar</button>`
+              : "No aplica"
+          }
+        </td>
       </tr>
     `
     )
     .join("");
+
+  el.playersTbody.querySelectorAll(".remove-player-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const playerId = btn.dataset.playerId;
+      if (!playerId) return;
+      void removePlayer(playerId);
+    });
+  });
 }
 
 function renderRanking(ranking) {
@@ -173,6 +188,33 @@ async function refreshStatsAndHistory() {
   renderRanking(state.ranking);
   renderMatchHistory(state.history);
   renderEvents(stats.recent_events || state.events);
+}
+
+async function removePlayer(playerId) {
+  try {
+    const response = await fetch("/api/admin/remove-player", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ player_id: playerId }),
+    });
+
+    if (!response.ok) {
+      const payload = await response.json().catch(() => ({}));
+      el.adminActionStatus.textContent = payload.detail || "No se pudo quitar al jugador";
+      return;
+    }
+
+    const payload = await response.json();
+    el.adminActionStatus.textContent = payload.reason || "Jugador removido";
+    if (payload.snapshot) {
+      renderSnapshot(payload.snapshot);
+    }
+  } catch (error) {
+    console.error("remove player failed", error);
+    el.adminActionStatus.textContent = "Error de red al quitar jugador";
+  }
 }
 
 function connectEvents() {
