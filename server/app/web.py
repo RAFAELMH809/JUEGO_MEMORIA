@@ -36,8 +36,8 @@ class PreviewPayload(BaseModel):
     col: int
 
 
-class AdminRemovePlayerPayload(BaseModel):
-    player_id: str = Field(min_length=1)
+class AdminBoardSizePayload(BaseModel):
+    size: int
 
 
 def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
@@ -121,9 +121,16 @@ def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
         result = engine.admin_reset_match()
         return JSONResponse(result)
 
-    @app.post("/api/admin/remove-player", response_class=JSONResponse)
-    async def api_admin_remove_player(payload: AdminRemovePlayerPayload) -> JSONResponse:
-        result = engine.admin_remove_player(payload.player_id)
+    @app.post("/api/admin/board-size", response_class=JSONResponse)
+    async def api_admin_board_size(payload: AdminBoardSizePayload) -> JSONResponse:
+        result = engine.admin_set_board_size(payload.size)
+        if not result["success"]:
+            raise HTTPException(status_code=400, detail=result["reason"])
+        return JSONResponse(result)
+
+    @app.post("/api/admin/board-size/auto", response_class=JSONResponse)
+    async def api_admin_board_size_auto() -> JSONResponse:
+        result = engine.admin_use_auto_board()
         if not result["success"]:
             raise HTTPException(status_code=400, detail=result["reason"])
         return JSONResponse(result)

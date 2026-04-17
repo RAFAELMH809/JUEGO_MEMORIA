@@ -289,7 +289,8 @@ La arquitectura ya esta lista para 3+ clientes concurrentes, incluyendo desplieg
 - `POST /api/play` jugada completa (2 cartas)
 - `POST /api/admin/start` inicio manual por administrador
 - `POST /api/admin/reset` reinicio total de ronda por administrador
-- `POST /api/admin/remove-player` remocion de jugador en sala de espera
+- `POST /api/admin/board-size` seleccion manual de tablero (`4`, `6`, `8`)
+- `POST /api/admin/board-size/auto` volver a modo automatico por cantidad de jugadores
 - `GET /api/stats` estadisticas y ranking
 - `GET /api/history` historial persistido
 
@@ -385,8 +386,9 @@ Nota de red:
 
 ### Tamano de tablero por cantidad de jugadores
 
-- 2 o 3 jugadores: `4x4`
-- 4 jugadores: `6x6`
+- 2 jugadores: `4x4`
+- 3 jugadores: `6x6`
+- 4 jugadores: `8x8`
 
 Nota tecnica: no se usan `5x5` o `7x7` porque el juego de memoria necesita numero par de celdas para formar parejas completas.
 

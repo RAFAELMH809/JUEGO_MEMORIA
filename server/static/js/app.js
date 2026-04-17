@@ -13,6 +13,8 @@ const el = {
   minPlayers: document.getElementById("min-players"),
   maxPlayers: document.getElementById("max-players"),
   boardRecommendation: document.getElementById("board-recommendation"),
+  boardSelected: document.getElementById("board-selected"),
+  boardMode: document.getElementById("board-mode"),
   board: document.getElementById("board"),
   playersTbody: document.getElementById("players-tbody"),
   rankingTbody: document.getElementById("ranking-tbody"),
@@ -21,6 +23,8 @@ const el = {
   winnerBanner: document.getElementById("winner-banner"),
   adminStartBtn: document.getElementById("admin-start-btn"),
   adminResetBtn: document.getElementById("admin-reset-btn"),
+  adminBoardSize: document.getElementById("admin-board-size"),
+  adminApplyBoardBtn: document.getElementById("admin-apply-board-btn"),
   adminActionStatus: document.getElementById("admin-action-status")
 };
 
@@ -63,7 +67,6 @@ function renderBoard(board) {
 }
 
 function renderPlayers(players) {
-  const waiting = state.snapshot?.status === "WAITING_FOR_PLAYERS";
   el.playersTbody.innerHTML = players
     .map(
       (p) => `
@@ -76,7 +79,6 @@ function renderPlayers(players) {
         <td>${Number(p.average_response_time).toFixed(3)}</td>
         <td>${Number(p.total_response_time).toFixed(3)}</td>
         <td>${p.is_current_turn ? "Si" : "No"}</td>
-        <td>${waiting ? `<button class="btn btn-danger btn-sm" data-remove-player-id="${p.player_id}">Quitar</button>` : "-"}</td>
       </tr>
     `
     )
@@ -142,6 +144,8 @@ function renderSnapshot(snapshot) {
   el.minPlayers.textContent = snapshot.min_players;
   el.maxPlayers.textContent = snapshot.max_players || 4;
   el.boardRecommendation.textContent = snapshot.board_recommendation || `${snapshot.board.rows}x${snapshot.board.cols}`;
+  el.boardSelected.textContent = snapshot.board_selected || `${snapshot.board.rows}x${snapshot.board.cols}`;
+  el.boardMode.textContent = snapshot.board_mode || "automatico";
 
   renderBoard(snapshot.admin_board || snapshot.board);
   renderPlayers(snapshot.players || []);
@@ -211,28 +215,31 @@ async function runAdminAction(url, successMessage) {
   }
 }
 
-async function removePlayer(playerId) {
+async function applyBoardSize() {
+  const selected = el.adminBoardSize.value;
+  const endpoint = selected === "auto" ? "/api/admin/board-size/auto" : "/api/admin/board-size";
+  const options = { method: "POST", headers: { "Content-Type": "application/json" } };
+  if (selected !== "auto") {
+    options.body = JSON.stringify({ size: Number(selected) });
+  }
+
   try {
-    const response = await fetch("/api/admin/remove-player", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ player_id: playerId })
-    });
+    const response = await fetch(endpoint, options);
 
     if (!response.ok) {
       const payload = await response.json();
-      el.adminActionStatus.textContent = payload.detail || "No se pudo quitar al jugador";
+      el.adminActionStatus.textContent = payload.detail || "No se pudo aplicar el tablero";
       return;
     }
 
     const payload = await response.json();
-    el.adminActionStatus.textContent = payload.reason || "Jugador removido";
+    el.adminActionStatus.textContent = payload.reason || "Configuracion de tablero aplicada";
     if (payload.snapshot) {
       renderSnapshot(payload.snapshot);
     }
   } catch (error) {
-    console.error("remove player failed", error);
-    el.adminActionStatus.textContent = "Error de red al quitar jugador";
+    console.error("apply board size failed", error);
+    el.adminActionStatus.textContent = "Error de red al configurar tablero";
   }
 }
 
@@ -250,13 +257,8 @@ function init() {
   el.adminResetBtn.addEventListener("click", () => {
     void runAdminAction("/api/admin/reset", "Partida reiniciada");
   });
-
-  el.playersTbody.addEventListener("click", (event) => {
-    const target = event.target;
-    if (!(target instanceof HTMLElement)) return;
-    const playerId = target.dataset.removePlayerId;
-    if (!playerId) return;
-    void removePlayer(playerId);
+  el.adminApplyBoardBtn.addEventListener("click", () => {
+    void applyBoardSize();
   });
 }
 

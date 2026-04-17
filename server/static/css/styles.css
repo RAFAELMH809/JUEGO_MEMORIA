@@ -141,6 +141,15 @@ h1 {
   font-size: 0.82rem;
 }
 
+.select-control {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #0f141a;
+  color: var(--ink);
+  padding: 9px 12px;
+  font-weight: 600;
+}
+
 .hint {
   color: var(--muted);
   font-size: 0.92rem;

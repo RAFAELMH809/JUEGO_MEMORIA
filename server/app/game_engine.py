@@ -40,6 +40,7 @@ class GameEngine:
         self._finished_at = ""
         self._board_rows = settings.board_rows
         self._board_cols = settings.board_cols
+        self._manual_board_size: tuple[int, int] | None = None
 
         self._players: dict[str, Player] = {}
         self._player_order: list[str] = []
@@ -170,38 +171,59 @@ class GameEngine:
                 "snapshot": self._build_snapshot_locked(),
             }
 
-    def admin_remove_player(self, player_id: str) -> dict[str, Any]:
+    def admin_set_board_size(self, size: int) -> dict[str, Any]:
         with self._lock:
             if self._status != WAITING_FOR_PLAYERS:
                 return {
                     "success": False,
-                    "reason": "Solo puedes quitar jugadores antes de iniciar la partida",
+                    "reason": "Solo puedes ajustar el tablero antes de iniciar la partida",
                     "snapshot": self._build_snapshot_locked(),
                 }
 
-            if player_id not in self._players:
+            if size not in {4, 6, 8}:
                 return {
                     "success": False,
-                    "reason": "Jugador no encontrado en la sala",
+                    "reason": "Tamano invalido. Usa 4, 6 u 8",
                     "snapshot": self._build_snapshot_locked(),
                 }
 
-            removed = self._players.pop(player_id)
-            self._player_order = [pid for pid in self._player_order if pid != player_id]
-            self._pending_first_pick.pop(player_id, None)
-
-            self._adapt_board_size_for_waiting_locked()
+            self._manual_board_size = (size, size)
+            self._board_rows, self._board_cols = size, size
+            self._initialize_board_locked()
 
             event = self._add_event_locked(
                 "SYSTEM_MESSAGE",
-                f"Admin removio al jugador {removed.name} de la sala.",
-                actor_player_id=player_id,
+                f"Admin fijo tablero manualmente en {size}x{size}",
             )
             self._publish_update_locked(event)
 
             return {
                 "success": True,
-                "reason": f"Jugador {removed.name} removido",
+                "reason": f"Tablero configurado manualmente en {size}x{size}",
+                "snapshot": self._build_snapshot_locked(),
+            }
+
+    def admin_use_auto_board(self) -> dict[str, Any]:
+        with self._lock:
+            if self._status != WAITING_FOR_PLAYERS:
+                return {
+                    "success": False,
+                    "reason": "Solo puedes activar modo automatico antes de iniciar la partida",
+                    "snapshot": self._build_snapshot_locked(),
+                }
+
+            self._manual_board_size = None
+            self._adapt_board_size_for_waiting_locked(force=True)
+
+            event = self._add_event_locked(
+                "SYSTEM_MESSAGE",
+                "Admin activo el modo automatico de tamano de tablero.",
+            )
+            self._publish_update_locked(event)
+
+            return {
+                "success": True,
+                "reason": "Modo automatico activado",
                 "snapshot": self._build_snapshot_locked(),
             }
 
@@ -289,14 +311,16 @@ class GameEngine:
 
     def _suggest_board_size_by_players_locked(self) -> tuple[int, int]:
         count = len(self._player_order)
-        if count <= 3:
+        if count <= 2:
             return (4, 4)
-        if count == 4:
+        if count == 3:
             return (6, 6)
         return (8, 8)
 
-    def _adapt_board_size_for_waiting_locked(self) -> None:
+    def _adapt_board_size_for_waiting_locked(self, force: bool = False) -> None:
         if self._status != WAITING_FOR_PLAYERS:
+            return
+        if self._manual_board_size and not force:
             return
         rows, cols = self._suggest_board_size_by_players_locked()
         if (rows, cols) == (self._board_rows, self._board_cols):
@@ -321,6 +345,7 @@ class GameEngine:
         self._turn_started_monotonic = time.monotonic()
         self._pending_miss = False
         self._pending_first_pick.clear()
+        self._manual_board_size = None
         self._winners = []
         self._persisted = False
         self._event_history.clear()
@@ -766,7 +791,9 @@ class GameEngine:
             "started_at": self._started_at,
             "finished_at": self._finished_at,
             "remaining_pairs": remaining_pairs,
-            "board_recommendation": f"{self._board_rows}x{self._board_cols}",
+            "board_recommendation": f"{self._suggest_board_size_by_players_locked()[0]}x{self._suggest_board_size_by_players_locked()[1]}",
+            "board_selected": f"{self._board_rows}x{self._board_cols}",
+            "board_mode": "manual" if self._manual_board_size else "automatico",
         }
 
     def _ranking_locked(self) -> list[dict[str, Any]]:
