@@ -1,14 +1,14 @@
 :root {
-  --bg: #f2f5ef;
-  --card: #ffffff;
-  --ink: #122026;
-  --muted: #5a6a70;
-  --line: #dce5df;
-  --brand: #0d9488;
-  --brand-2: #0f766e;
-  --alert: #c2410c;
-  --ok: #166534;
-  --shadow: 0 18px 40px rgba(18, 32, 38, 0.08);
+  --bg: #0c0f12;
+  --card: #141a20;
+  --ink: #e5ebf0;
+  --muted: #9aa8b4;
+  --line: #25303a;
+  --brand: #d70826;
+  --brand-2: #f43f5e;
+  --alert: #b91c1c;
+  --ok: #22c55e;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
   --radius: 18px;
 }
 
@@ -22,9 +22,9 @@ body {
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at 10% 10%, #d2efe1 0%, transparent 30%),
-    radial-gradient(circle at 90% 20%, #dce8f8 0%, transparent 30%),
-    linear-gradient(160deg, #f6faf7 0%, #eff4f2 40%, #edf2f7 100%);
+    radial-gradient(circle at 5% 5%, rgba(215, 8, 38, 0.18) 0%, transparent 35%),
+    radial-gradient(circle at 95% 12%, rgba(59, 130, 246, 0.16) 0%, transparent 28%),
+    #0c0f12;
 }
 
 .bg-shape {
@@ -40,13 +40,13 @@ body {
 .shape-a {
   top: -140px;
   right: -80px;
-  background: #6ee7b7;
+  background: #ef4444;
 }
 
 .shape-b {
   bottom: -160px;
   left: -110px;
-  background: #93c5fd;
+  background: #1d4ed8;
 }
 
 .topbar {
@@ -87,9 +87,9 @@ h1 {
 
 .card {
   grid-column: span 12;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(20, 26, 32, 0.92);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(220, 229, 223, 0.95);
+  border: 1px solid rgba(37, 48, 58, 0.95);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 18px;
@@ -136,6 +136,11 @@ h1 {
   color: #ffffff;
 }
 
+.btn-sm {
+  padding: 6px 10px;
+  font-size: 0.82rem;
+}
+
 .hint {
   color: var(--muted);
   font-size: 0.92rem;
@@ -145,7 +150,7 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 12px;
-  background: #fbfdfc;
+  background: #10161d;
 }
 
 .metric span {
@@ -173,17 +178,17 @@ h1 {
   place-items: center;
   font-size: 1.2rem;
   font-weight: 600;
-  background: #f8faf9;
+  background: #0f141a;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .card-cell.revealed {
-  background: #e6f6f4;
+  background: #1f2937;
   transform: translateY(-2px);
 }
 
 .card-cell.matched {
-  background: #dcfce7;
+  background: #0f2f1d;
   color: var(--ok);
 }
 
@@ -206,7 +211,7 @@ td {
 }
 
 th {
-  color: #31444c;
+  color: #d6e0e8;
   font-weight: 600;
 }
 
@@ -222,7 +227,7 @@ th {
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 10px;
-  background: #fbfdfd;
+  background: #0f141a;
 }
 
 .event-item strong {
@@ -234,9 +239,9 @@ th {
   margin-top: 12px;
   padding: 12px;
   border-radius: 12px;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  color: #14532d;
+  background: #0f2f1d;
+  border: 1px solid #166534;
+  color: #dcfce7;
   font-weight: 600;
 }
 

@@ -25,7 +25,12 @@ def render_board(snapshot: memory_game_pb2.GameSnapshot) -> None:
 
 def print_snapshot(snapshot: memory_game_pb2.GameSnapshot) -> None:
     status_name = memory_game_pb2.GameStatus.Name(snapshot.status)
-    print(f"Estado: {status_name}")
+    status_map = {
+        "WAITING_FOR_PLAYERS": "Esperando jugadores",
+        "IN_PROGRESS": "En curso",
+        "FINISHED": "Finalizada",
+    }
+    print(f"Estado: {status_map.get(status_name, status_name)}")
     print(f"Jugadores conectados: {snapshot.connected_players}")
     print(f"Turno actual: {snapshot.current_turn_player_name or 'N/A'}")
     print(
@@ -76,7 +81,10 @@ def safe_play_turn(
     )
     try:
         response = stub.PlayTurn(request)
-        print(f"Respuesta jugada: accepted={response.accepted}, matched={response.matched}, reason={response.reason}")
+        print(
+            f"Respuesta jugada: aceptada={response.accepted}, "
+            f"pareja={response.matched}, detalle={response.reason}"
+        )
         print_snapshot(response.snapshot)
     except grpc.RpcError as exc:
         print(f"Jugada rechazada: {exc.code().name} - {exc.details()}")
@@ -87,8 +95,8 @@ def show_stats(stub: memory_game_pb2_grpc.MemoryGameServiceStub, match_id: str =
     print("\nRanking:")
     for idx, player in enumerate(response.ranking, start=1):
         print(
-            f"{idx}. {player.name} | score={player.score} | moves={player.moves} | "
-            f"avg={player.average_response_time:.3f}s"
+            f"{idx}. {player.name} | puntaje={player.score} | movimientos={player.moves} | "
+            f"promedio={player.average_response_time:.3f}s"
         )
 
 

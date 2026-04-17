@@ -24,6 +24,26 @@ const el = {
   adminActionStatus: document.getElementById("admin-action-status")
 };
 
+const statusLabelMap = {
+  WAITING_FOR_PLAYERS: "Esperando jugadores",
+  IN_PROGRESS: "En curso",
+  FINISHED: "Finalizada"
+};
+
+const eventLabelMap = {
+  PLAYER_JOINED: "Jugador unido",
+  GAME_STARTED: "Partida iniciada",
+  TURN_CHANGED: "Turno cambiado",
+  TURN_PLAYED: "Jugada realizada",
+  MATCH_FOUND: "Pareja encontrada",
+  MISS_REVEALED: "Intento sin pareja",
+  MISS_HIDDEN: "Cartas ocultadas",
+  GAME_OVER: "Fin de partida",
+  STATS_UPDATED: "Estadísticas actualizadas",
+  FULL_STATE_SYNC: "Sincronización",
+  SYSTEM_MESSAGE: "Sistema"
+};
+
 function shortId(id) {
   if (!id) return "";
   return id.slice(0, 8);
@@ -43,6 +63,7 @@ function renderBoard(board) {
 }
 
 function renderPlayers(players) {
+  const waiting = state.snapshot?.status === "WAITING_FOR_PLAYERS";
   el.playersTbody.innerHTML = players
     .map(
       (p) => `
@@ -55,6 +76,7 @@ function renderPlayers(players) {
         <td>${Number(p.average_response_time).toFixed(3)}</td>
         <td>${Number(p.total_response_time).toFixed(3)}</td>
         <td>${p.is_current_turn ? "Si" : "No"}</td>
+        <td>${waiting ? `<button class="btn btn-danger btn-sm" data-remove-player-id="${p.player_id}">Quitar</button>` : "-"}</td>
       </tr>
     `
     )
@@ -83,7 +105,7 @@ function renderEvents(events) {
     .map(
       (ev) => `
       <div class="event-item">
-        <strong>${ev.event_type}</strong>
+        <strong>${eventLabelMap[ev.event_type] || ev.event_type}</strong>
         <div>${ev.message}</div>
         <small>${ev.timestamp}</small>
       </div>
@@ -102,7 +124,7 @@ function renderMatchHistory(matches) {
         <td>${m.finished_at || "-"}</td>
         <td>${m.rows}x${m.cols}</td>
         <td>${(m.winners || []).join(", ") || "-"}</td>
-        <td>${m.status}</td>
+        <td>${statusLabelMap[m.status] || m.status}</td>
       </tr>
     `
     )
@@ -113,9 +135,9 @@ function renderSnapshot(snapshot) {
   if (!snapshot) return;
   state.snapshot = snapshot;
 
-  el.gameStatus.textContent = snapshot.status;
+  el.gameStatus.textContent = statusLabelMap[snapshot.status] || snapshot.status;
   el.connectedPlayers.textContent = snapshot.connected_players;
-  el.currentTurn.textContent = snapshot.current_turn_player_name || "N/A";
+  el.currentTurn.textContent = snapshot.current_turn_player_name || "No aplica";
   el.remainingPairs.textContent = snapshot.remaining_pairs;
   el.minPlayers.textContent = snapshot.min_players;
   el.maxPlayers.textContent = snapshot.max_players || 4;
@@ -189,6 +211,31 @@ async function runAdminAction(url, successMessage) {
   }
 }
 
+async function removePlayer(playerId) {
+  try {
+    const response = await fetch("/api/admin/remove-player", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ player_id: playerId })
+    });
+
+    if (!response.ok) {
+      const payload = await response.json();
+      el.adminActionStatus.textContent = payload.detail || "No se pudo quitar al jugador";
+      return;
+    }
+
+    const payload = await response.json();
+    el.adminActionStatus.textContent = payload.reason || "Jugador removido";
+    if (payload.snapshot) {
+      renderSnapshot(payload.snapshot);
+    }
+  } catch (error) {
+    console.error("remove player failed", error);
+    el.adminActionStatus.textContent = "Error de red al quitar jugador";
+  }
+}
+
 function init() {
   renderSnapshot(state.snapshot);
   refreshStatsAndHistory().catch(() => {
@@ -202,6 +249,14 @@ function init() {
   });
   el.adminResetBtn.addEventListener("click", () => {
     void runAdminAction("/api/admin/reset", "Partida reiniciada");
+  });
+
+  el.playersTbody.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    const playerId = target.dataset.removePlayerId;
+    if (!playerId) return;
+    void removePlayer(playerId);
   });
 }
 

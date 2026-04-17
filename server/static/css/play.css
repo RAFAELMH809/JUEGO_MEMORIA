@@ -1,13 +1,13 @@
 :root {
-  --bg: #f5f8f7;
-  --card: #ffffff;
-  --ink: #102028;
-  --muted: #5f7178;
-  --line: #d6e3df;
-  --brand: #0f766e;
-  --brand-2: #115e59;
-  --ok: #166534;
-  --warn: #b45309;
+  --bg: #0c0f12;
+  --card: #141a20;
+  --ink: #e5ebf0;
+  --muted: #9aa8b4;
+  --line: #25303a;
+  --brand: #d70826;
+  --brand-2: #b10a22;
+  --ok: #22c55e;
+  --warn: #f59e0b;
 }
 
 * {
@@ -18,7 +18,10 @@ body {
   margin: 0;
   color: var(--ink);
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
-  background: radial-gradient(circle at 10% 0%, #d9f4e8 0%, transparent 25%), #edf2f7;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(215, 8, 38, 0.16) 0%, transparent 32%),
+    radial-gradient(circle at 100% 0%, rgba(59, 130, 246, 0.14) 0%, transparent 28%),
+    #0c0f12;
 }
 
 .topbar {
@@ -26,7 +29,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  background: #ffffffcc;
+  background: rgba(12, 15, 18, 0.92);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(6px);
 }
@@ -63,7 +66,7 @@ body {
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 16px;
-  box-shadow: 0 10px 24px rgba(16, 32, 40, 0.08);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
 }
 
 .join-card,
@@ -84,6 +87,8 @@ body {
   flex: 1;
   min-width: 0;
   border: 1px solid var(--line);
+  background: #0f141a;
+  color: var(--ink);
   border-radius: 10px;
   padding: 10px;
   font-size: 1rem;
@@ -111,6 +116,7 @@ body {
 
 .metrics div {
   border: 1px solid var(--line);
+  background: #10161d;
   border-radius: 12px;
   padding: 10px;
 }
@@ -126,9 +132,11 @@ body {
 }
 
 .board {
-  margin-top: 8px;
+  margin: 8px auto 0;
   display: grid;
   gap: 8px;
+  width: min(92vw, 74vh);
+  max-width: 760px;
 }
 
 .cell {
@@ -136,7 +144,8 @@ body {
   perspective: 800px;
   border: 1px solid var(--line);
   border-radius: 10px;
-  min-height: 64px;
+  aspect-ratio: 1 / 1;
+  min-height: 42px;
   display: grid;
   place-items: center;
   background: transparent;
@@ -165,31 +174,31 @@ body {
   place-items: center;
   backface-visibility: hidden;
   border: 1px solid var(--line);
-  font-size: 1.35rem;
+  font-size: clamp(1.05rem, 2.4vw, 1.9rem);
   font-weight: 700;
 }
 
 .cell-front {
-  background: #f8fbfa;
-  color: #32505c;
+  background: #0f141a;
+  color: #8ea0af;
 }
 
 .cell-back {
   transform: rotateY(180deg);
-  background: #ecfdf5;
+  background: #18232d;
 }
 
 .cell.selected .cell-front {
   outline: 2px solid var(--warn);
-  background: #fff7ed;
+  background: #2a1f08;
 }
 
 .cell.revealed .cell-back {
-  background: #d1fae5;
+  background: #1f2937;
 }
 
 .cell.matched .cell-back {
-  background: #bbf7d0;
+  background: #0f2f1d;
   color: var(--ok);
 }
 
@@ -199,9 +208,9 @@ body {
 
 .turn-banner {
   margin-bottom: 10px;
-  border: 1px solid #99f6e4;
-  background: #f0fdfa;
-  color: #134e4a;
+  border: 1px solid #3f3f46;
+  background: #111827;
+  color: #e5e7eb;
   border-radius: 10px;
   padding: 10px;
   font-weight: 700;
@@ -223,6 +232,10 @@ td {
   padding: 8px;
 }
 
+th {
+  color: #d6e0e8;
+}
+
 .event-log {
   max-height: 220px;
   overflow: auto;
@@ -234,7 +247,7 @@ td {
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 8px;
-  background: #fbfdfd;
+  background: #0f141a;
 }
 
 .winner-overlay {
@@ -252,19 +265,19 @@ td {
 }
 
 .winner-card {
-  background: #ffffff;
+  background: #10161d;
   border-radius: 16px;
   padding: 24px;
   min-width: min(92vw, 460px);
   text-align: center;
-  border: 1px solid #bbf7d0;
+  border: 1px solid #384350;
   box-shadow: 0 16px 36px rgba(16, 32, 40, 0.32);
   animation: popIn 0.35s ease;
 }
 
 .winner-card h2 {
   margin: 0 0 8px;
-  color: #14532d;
+  color: #f8fafc;
 }
 
 @keyframes popIn {

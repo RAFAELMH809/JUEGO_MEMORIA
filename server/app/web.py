@@ -36,6 +36,10 @@ class PreviewPayload(BaseModel):
     col: int
 
 
+class AdminRemovePlayerPayload(BaseModel):
+    player_id: str = Field(min_length=1)
+
+
 def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
     app = FastAPI(
         title="Memory Game Distributed Server",
@@ -115,6 +119,13 @@ def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
     @app.post("/api/admin/reset", response_class=JSONResponse)
     async def api_admin_reset() -> JSONResponse:
         result = engine.admin_reset_match()
+        return JSONResponse(result)
+
+    @app.post("/api/admin/remove-player", response_class=JSONResponse)
+    async def api_admin_remove_player(payload: AdminRemovePlayerPayload) -> JSONResponse:
+        result = engine.admin_remove_player(payload.player_id)
+        if not result["success"]:
+            raise HTTPException(status_code=400, detail=result["reason"])
         return JSONResponse(result)
 
     @app.get("/api/stats", response_class=JSONResponse)

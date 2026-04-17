@@ -8,6 +8,26 @@ const state = {
   playerName: localStorage.getItem("memory_player_name") || ""
 };
 
+const statusLabelMap = {
+  WAITING_FOR_PLAYERS: "Esperando jugadores",
+  IN_PROGRESS: "En curso",
+  FINISHED: "Finalizada"
+};
+
+const eventLabelMap = {
+  PLAYER_JOINED: "Jugador unido",
+  GAME_STARTED: "Partida iniciada",
+  TURN_CHANGED: "Turno cambiado",
+  TURN_PLAYED: "Jugada realizada",
+  MATCH_FOUND: "Pareja encontrada",
+  MISS_REVEALED: "Intento sin pareja",
+  MISS_HIDDEN: "Cartas ocultadas",
+  GAME_OVER: "Fin de partida",
+  STATS_UPDATED: "Estadísticas actualizadas",
+  FULL_STATE_SYNC: "Sincronización",
+  SYSTEM_MESSAGE: "Sistema"
+};
+
 const el = {
   nameInput: document.getElementById("player-name"),
   joinBtn: document.getElementById("join-btn"),
@@ -91,7 +111,7 @@ function renderEvents() {
     .map(
       (e) => `
       <div class="event-item">
-        <strong>${e.event_type}</strong>
+        <strong>${eventLabelMap[e.event_type] || e.event_type}</strong>
         <div>${e.message}</div>
         <small>${e.timestamp}</small>
       </div>
@@ -104,9 +124,9 @@ function renderSnapshot(snapshot) {
   if (!snapshot) return;
   state.snapshot = snapshot;
 
-  el.gameStatus.textContent = snapshot.status;
-  el.currentTurn.textContent = snapshot.current_turn_player_name || "N/A";
-  el.turnBanner.textContent = `Turno actual: ${snapshot.current_turn_player_name || "N/A"}`;
+  el.gameStatus.textContent = statusLabelMap[snapshot.status] || snapshot.status;
+  el.currentTurn.textContent = snapshot.current_turn_player_name || "No aplica";
+  el.turnBanner.textContent = `Turno actual: ${snapshot.current_turn_player_name || "No aplica"}`;
   el.remainingPairs.textContent = snapshot.remaining_pairs;
   el.connectedPlayers.textContent = snapshot.connected_players;
   el.maxPlayers.textContent = snapshot.max_players || 4;
@@ -320,7 +340,7 @@ function connectEvents() {
 function init() {
   if (state.playerName) {
     el.nameInput.value = state.playerName;
-    setJoinStatus(`Sesion local detectada para ${state.playerName}. Si falla, vuelve a unirte.`);
+    setJoinStatus(`Sesión local detectada para ${state.playerName}. Si falla, vuelve a unirte.`);
   }
 
   renderSnapshot(state.snapshot);

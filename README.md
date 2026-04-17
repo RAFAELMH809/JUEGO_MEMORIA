@@ -278,9 +278,18 @@ La arquitectura ya esta lista para 3+ clientes concurrentes, incluyendo desplieg
 
 ## 12. Endpoints HTTP del panel
 
-- `GET /` dashboard
-- `GET /events` SSE de actualizaciones
-- `GET /api/state` snapshot actual
+- `GET /` interfaz de jugadores (juego web)
+- `GET /admin` panel administrativo
+- `GET /events` SSE para jugadores
+- `GET /events/admin` SSE para panel admin
+- `GET /api/state` snapshot publico
+- `GET /api/state/admin` snapshot admin (incluye tablero real)
+- `POST /api/join` registro/reconexion de jugador web
+- `POST /api/preview` primera carta (giro previo a segunda seleccion)
+- `POST /api/play` jugada completa (2 cartas)
+- `POST /api/admin/start` inicio manual por administrador
+- `POST /api/admin/reset` reinicio total de ronda por administrador
+- `POST /api/admin/remove-player` remocion de jugador en sala de espera
 - `GET /api/stats` estadisticas y ranking
 - `GET /api/history` historial persistido
 
@@ -362,3 +371,87 @@ Nota de red:
 - [x] stream de eventos para sincronizacion de UI cliente
 - [x] validaciones y reglas del juego ya centralizadas en servidor
 - [x] panel web de monitoreo para depuracion durante desarrollo cliente
+
+## 15. Logica actual de juego web (admin + jugadores)
+
+### Flujo de sala
+
+1. Los jugadores entran por `GET /` y se registran con nombre.
+2. El servidor permite maximo 4 jugadores en sala (`MAX_PLAYERS=4`).
+3. Mientras el estado es `WAITING_FOR_PLAYERS`, el admin puede:
+  - iniciar partida manualmente,
+  - reiniciar sala,
+  - quitar jugadores puntuales.
+
+### Tamano de tablero por cantidad de jugadores
+
+- 2 o 3 jugadores: `4x4`
+- 4 jugadores: `6x6`
+
+Nota tecnica: no se usan `5x5` o `7x7` porque el juego de memoria necesita numero par de celdas para formar parejas completas.
+
+### Turnos y jugada carta por carta
+
+1. El jugador elige una carta (`/api/preview`) y ve su emoji localmente.
+2. Elige la segunda carta (`/api/play`).
+3. Si hay match, suma punto y conserva turno.
+4. Si no hay match, ambas cartas se ocultan tras `REVEAL_DELAY_SECONDS`.
+5. Todos reciben actualizacion por SSE/gRPC sin polling.
+
+### Roles de visualizacion
+
+- Jugador (`/`): solo ve tablero publico.
+- Admin (`/admin`): ve tablero real con todas las cartas.
+
+## 16. Guia para documentar el reporte PDF
+
+Usa esta estructura para que el equipo pueda documentar rapido:
+
+1. Objetivo del proyecto y alcance.
+2. Arquitectura (gRPC, motor de juego, web, persistencia, broadcaster).
+3. Diagrama de flujo de eventos (`Join -> Start -> Preview -> Play -> Stream`).
+4. Concurrencia y sincronizacion (`threading.Lock`, cola por suscriptor).
+5. Red y despliegue (LAN + Docker Compose + puertos).
+6. Persistencia (`matches_history.json`, consultas de historial/stats).
+7. Evidencia (capturas de `/`, `/admin`, 3 clientes conectados, fin de juego).
+8. Pruebas de checklist y resultados.
+9. Reflexion tecnica del equipo.
+
+## 17. Checklist operativo alineado a la rubrica
+
+### 1) Configuracion y arquitectura
+
+- [x] .proto compilado y en uso por servidor/clientes
+- [x] servidor levantando y aceptando multiples conexiones
+- [x] despliegue con Docker Compose
+- [x] servicios expuestos para red LAN
+
+### 2) Funcionalidad del servidor
+
+- [x] ID unico por cliente (UUID)
+- [x] estado global centralizado del tablero
+- [x] control de turnos estricto
+- [x] validacion de jugadas y coordenadas
+- [x] actualizaciones en tiempo real a todos
+- [x] deteccion de fin de juego
+- [x] metricas por jugador (score, movimientos, tiempos)
+
+### 3) Funcionalidad del cliente
+
+- [x] cliente gRPC CLI funcional
+- [x] cliente web funcional por navegador
+- [x] seleccion de dos cartas por turno
+- [x] mensajes de estado/errores y fin de juego
+
+### 4) Sincronizacion y red
+
+- [x] streaming gRPC + SSE sin polling
+- [x] soporte multi-cliente en paralelo
+- [x] funcionamiento en LAN con IP del host
+
+### 5) Documentacion y evidencia
+
+- [x] README tecnico y actualizado
+- [x] arquitectura y decisiones documentadas
+- [x] pasos de ejecucion local/Docker
+- [x] checklist para reporte PDF
