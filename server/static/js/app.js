@@ -141,7 +141,7 @@ async function refreshStatsAndHistory() {
 }
 
 function connectEvents() {
-  const source = new EventSource("/events");
+  const source = new EventSource("/events/admin");
 
   source.addEventListener("game_update", (event) => {
     const payload = JSON.parse(event.data);

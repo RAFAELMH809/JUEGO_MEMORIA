@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ project_title }} - Jugadores</title>
+    <link rel="stylesheet" href="/static/css/play.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Juego de Memoria Distribuido</h1>
+        <p>Frontend de jugadores en tiempo real</p>
+      </div>
+      <a class="admin-link" href="/admin" target="_blank" rel="noreferrer">Vista Admin</a>
+    </header>
+
+    <main class="layout">
+      <section class="card join-card">
+        <h2>Entrar al Juego</h2>
+        <div class="join-row">
+          <input id="player-name" type="text" maxlength="40" placeholder="Tu nombre" />
+          <button id="join-btn">Unirme</button>
+        </div>
+        <p id="join-status" class="hint">Aun no te has unido.</p>
+      </section>
+
+      <section class="card status-card">
+        <h2>Estado</h2>
+        <div class="metrics">
+          <div><span>Partida</span><strong id="game-status">{{ snapshot.status }}</strong></div>
+          <div><span>Turno</span><strong id="current-turn">{{ snapshot.current_turn_player_name or "N/A" }}</strong></div>
+          <div><span>Parejas restantes</span><strong id="remaining-pairs">{{ snapshot.remaining_pairs }}</strong></div>
+          <div><span>Conectados</span><strong id="connected-players">{{ snapshot.connected_players }}</strong></div>
+        </div>
+      </section>
+
+      <section class="card board-card">
+        <h2>Tablero de Juego</h2>
+        <p class="hint">Selecciona 2 tarjetas por turno. Solo se muestran tus revelaciones temporales y parejas encontradas.</p>
+        <div id="board" class="board"></div>
+      </section>
+
+      <section class="card">
+        <h2>Ranking</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Jugador</th>
+                <th>Score</th>
+                <th>Mov.</th>
+                <th>Parejas</th>
+                <th>Turno</th>
+              </tr>
+            </thead>
+            <tbody id="players-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Eventos Recientes</h2>
+        <div id="event-log" class="event-log"></div>
+      </section>
+    </main>
+
+    <script>
+      globalThis.__INITIAL_SNAPSHOT__ = {{ snapshot|tojson }};
+    </script>
+    <script src="/static/js/play.js"></script>
+  </body>
+</html>

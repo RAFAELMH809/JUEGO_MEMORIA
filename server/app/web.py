@@ -6,7 +6,8 @@ import logging
 from typing import Annotated
 from typing import AsyncGenerator
 
-from fastapi import FastAPI, Query, Request
+from fastapi import FastAPI, HTTPException, Query, Request
+from pydantic import BaseModel, Field
 from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -15,6 +16,18 @@ from .config import Settings
 from .game_engine import GameEngine
 
 LOGGER = logging.getLogger("memory.web")
+
+
+class JoinPayload(BaseModel):
+    player_name: str = Field(min_length=1, max_length=40)
+
+
+class PlayPayload(BaseModel):
+    player_id: str = Field(min_length=1)
+    first_row: int
+    first_col: int
+    second_row: int
+    second_col: int
 
 
 def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
@@ -32,6 +45,17 @@ def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
     )
 
     @app.get("/", response_class=HTMLResponse)
+    async def player_frontend(request: Request) -> HTMLResponse:
+        return templates.TemplateResponse(
+            request=request,
+            name="play.html",
+            context={
+                "snapshot": engine.get_snapshot(),
+                "project_title": "Juego de Memoria Distribuido con gRPC",
+            },
+        )
+
+    @app.get("/admin", response_class=HTMLResponse)
     async def dashboard(request: Request) -> HTMLResponse:
         return templates.TemplateResponse(
             request=request,
@@ -44,7 +68,29 @@ def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
 
     @app.get("/api/state", response_class=JSONResponse)
     async def api_state() -> JSONResponse:
+        return JSONResponse(engine.get_snapshot())
+
+    @app.get("/api/state/admin", response_class=JSONResponse)
+    async def api_state_admin() -> JSONResponse:
         return JSONResponse(engine.get_admin_snapshot())
+
+    @app.post("/api/join", response_class=JSONResponse)
+    async def api_join(payload: JoinPayload) -> JSONResponse:
+        result = engine.join_game(payload.player_name)
+        if not result["accepted"]:
+            raise HTTPException(status_code=400, detail=result["reason"])
+        return JSONResponse(result)
+
+    @app.post("/api/play", response_class=JSONResponse)
+    async def api_play(payload: PlayPayload) -> JSONResponse:
+        result = engine.play_turn(
+            payload.player_id,
+            (payload.first_row, payload.first_col),
+            (payload.second_row, payload.second_col),
+        )
+        if not result["accepted"]:
+            raise HTTPException(status_code=400, detail=result["reason"])
+        return JSONResponse(result)
 
     @app.get("/api/stats", response_class=JSONResponse)
     async def api_stats(match_id: str = "") -> JSONResponse:
@@ -69,12 +115,46 @@ def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
                 while True:
                     try:
                         payload = await asyncio.to_thread(subscription.updates.get, True, 15)
-                        payload["snapshot"] = engine.get_admin_snapshot()
-                        yield f"event: game_update\ndata: {json.dumps(payload, ensure_ascii=False)}\n\n"
+                        public_payload = dict(payload)
+                        public_payload["snapshot"] = engine.get_snapshot()
+                        yield f"event: game_update\ndata: {json.dumps(public_payload, ensure_ascii=False)}\n\n"
                     except Exception:
                         yield "event: heartbeat\ndata: {}\n\n"
             except asyncio.CancelledError:
                 LOGGER.info("SSE stream cancelado")
+                raise
+            finally:
+                engine.broadcaster.unsubscribe(subscription.subscription_id)
+
+        return StreamingResponse(
+            event_stream(),
+            media_type="text/event-stream",
+            headers={
+                "Cache-Control": "no-cache",
+                "Connection": "keep-alive",
+            },
+        )
+
+    @app.get("/events/admin")
+    async def sse_events_admin() -> StreamingResponse:
+        subscription = engine.broadcaster.subscribe()
+
+        async def event_stream() -> AsyncGenerator[str, None]:
+            try:
+                initial = engine.build_full_sync_update()
+                initial["snapshot"] = engine.get_admin_snapshot()
+                yield f"event: game_update\ndata: {json.dumps(initial, ensure_ascii=False)}\n\n"
+
+                while True:
+                    try:
+                        payload = await asyncio.to_thread(subscription.updates.get, True, 15)
+                        admin_payload = dict(payload)
+                        admin_payload["snapshot"] = engine.get_admin_snapshot()
+                        yield f"event: game_update\ndata: {json.dumps(admin_payload, ensure_ascii=False)}\n\n"
+                    except Exception:
+                        yield "event: heartbeat\ndata: {}\n\n"
+            except asyncio.CancelledError:
+                LOGGER.info("SSE admin stream cancelado")
                 raise
             finally:
                 engine.broadcaster.unsubscribe(subscription.subscription_id)
