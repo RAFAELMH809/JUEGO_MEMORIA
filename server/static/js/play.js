@@ -5,8 +5,12 @@ const state = {
   firstPreview: null,
   winnerShownForMatch: "",
   playerId: localStorage.getItem("memory_player_id") || "",
-  playerName: localStorage.getItem("memory_player_name") || ""
+  playerName: localStorage.getItem("memory_player_name") || "",
+  sessionId: localStorage.getItem("memory_session_id") || crypto.randomUUID(),
+  latencySamples: []
 };
+
+localStorage.setItem("memory_session_id", state.sessionId);
 
 const statusLabelMap = {
   WAITING_FOR_PLAYERS: "Esperando jugadores",
@@ -49,6 +53,33 @@ const el = {
 
 function setJoinStatus(message) {
   el.joinStatus.textContent = message;
+}
+
+function getNetworkLatencyHintMs() {
+  const navConn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  if (navConn && Number.isFinite(navConn.rtt) && navConn.rtt > 0) {
+    return Number(navConn.rtt);
+  }
+  if (state.latencySamples.length > 0) {
+    const sum = state.latencySamples.reduce((acc, value) => acc + value, 0);
+    return sum / state.latencySamples.length;
+  }
+  return 0;
+}
+
+function registerLatencySample(latencyMs) {
+  if (!Number.isFinite(latencyMs) || latencyMs < 0) return;
+  state.latencySamples.push(latencyMs);
+  if (state.latencySamples.length > 30) {
+    state.latencySamples.splice(0, state.latencySamples.length - 30);
+  }
+}
+
+async function fetchWithTelemetry(url, options) {
+  const started = performance.now();
+  const response = await fetch(url, options);
+  registerLatencySample(performance.now() - started);
+  return response;
 }
 
 function coordKey(row, col) {
@@ -175,10 +206,14 @@ async function joinGame() {
   }
 
   try {
-    const response = await fetch("/api/join", {
+    const response = await fetchWithTelemetry("/api/join", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ player_name: playerName })
+      body: JSON.stringify({
+        player_name: playerName,
+        session_id: state.sessionId,
+        client_latency_ms: getNetworkLatencyHintMs()
+      })
     });
 
     if (!response.ok) {
@@ -214,7 +249,7 @@ async function playSelected() {
   const [a, b] = state.selected;
 
   try {
-    const response = await fetch("/api/play", {
+    const response = await fetchWithTelemetry("/api/play", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -222,7 +257,9 @@ async function playSelected() {
         first_row: a.row,
         first_col: a.col,
         second_row: b.row,
-        second_col: b.col
+        second_col: b.col,
+        session_id: state.sessionId,
+        client_latency_ms: getNetworkLatencyHintMs()
       })
     });
 
@@ -254,13 +291,15 @@ async function previewFirstCard(row, col) {
   }
 
   try {
-    const response = await fetch("/api/preview", {
+    const response = await fetchWithTelemetry("/api/preview", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         player_id: state.playerId,
         row,
-        col
+        col,
+        session_id: state.sessionId,
+        client_latency_ms: getNetworkLatencyHintMs()
       })
     });
 

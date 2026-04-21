@@ -3,6 +3,7 @@ from __future__ import annotations
 import threading
 import time
 import uuid
+from statistics import mean
 from collections import deque
 from typing import Any
 
@@ -54,6 +55,11 @@ class GameEngine:
         self._pending_first_pick: dict[str, tuple[int, int]] = {}
         self._winners: list[str] = []
         self._persisted = False
+        self._round_started_monotonic: float | None = None
+        self._round_elapsed_ms: float = 0.0
+        self._player_sessions: dict[str, str] = {}
+        self._player_help_counts: dict[str, int] = {}
+        self._player_latency_samples: dict[str, list[float]] = {}
         self._event_history: deque[dict[str, Any]] = deque(maxlen=settings.event_history_limit)
         self._initialize_board_locked()
 
@@ -66,7 +72,12 @@ class GameEngine:
     def lock(self) -> threading.Lock:
         return self._lock
 
-    def join_game(self, player_name: str) -> dict[str, Any]:
+    def join_game(
+        self,
+        player_name: str,
+        session_id: str = "",
+        client_latency_ms: float | None = None,
+    ) -> dict[str, Any]:
         cleaned_name = (player_name or "").strip()
         if not cleaned_name:
             return {
@@ -83,6 +94,8 @@ class GameEngine:
             if self._status == IN_PROGRESS:
                 existing_player_id = self._find_player_id_by_name_locked(cleaned_name)
                 if existing_player_id:
+                    self._set_player_session_locked(existing_player_id, session_id)
+                    self._register_latency_locked(existing_player_id, client_latency_ms)
                     return {
                         "accepted": True,
                         "reason": "Jugador reconectado a la partida en curso",
@@ -108,6 +121,8 @@ class GameEngine:
             player = Player(player_id=player_id, name=cleaned_name)
             self._players[player_id] = player
             self._player_order.append(player_id)
+            self._set_player_session_locked(player_id, session_id)
+            self._register_latency_locked(player_id, client_latency_ms)
 
             event = self._add_event_locked(
                 "PLAYER_JOINED",
@@ -262,7 +277,14 @@ class GameEngine:
                 "snapshot": self._build_snapshot_locked(),
             }
 
-    def preview_first_pick(self, player_id: str, row: int, col: int) -> dict[str, Any]:
+    def preview_first_pick(
+        self,
+        player_id: str,
+        row: int,
+        col: int,
+        session_id: str = "",
+        client_latency_ms: float | None = None,
+    ) -> dict[str, Any]:
         with self._lock:
             if self._status != IN_PROGRESS:
                 return {
@@ -284,6 +306,9 @@ class GameEngine:
                     "reason": "Jugador no registrado",
                     "snapshot": self._build_snapshot_locked(),
                 }
+
+            self._set_player_session_locked(player_id, session_id)
+            self._register_latency_locked(player_id, client_latency_ms)
 
             expected_player_id = self._player_order[self._current_turn_index]
             if player_id != expected_player_id:
@@ -317,6 +342,7 @@ class GameEngine:
                 }
 
             self._pending_first_pick[player_id] = (row, col)
+            self._player_help_counts[player_id] = self._player_help_counts.get(player_id, 0) + 1
 
             return {
                 "success": True,
@@ -383,6 +409,11 @@ class GameEngine:
         self._manual_board_size = None
         self._winners = []
         self._persisted = False
+        self._round_started_monotonic = None
+        self._round_elapsed_ms = 0.0
+        self._player_sessions.clear()
+        self._player_help_counts.clear()
+        self._player_latency_samples.clear()
         self._event_history.clear()
         self._initialize_board_locked()
 
@@ -464,8 +495,18 @@ class GameEngine:
         matches = self.storage.list_matches(limit=limit)
         return {"success": True, "reason": "OK", "matches": matches}
 
-    def play_turn(self, player_id: str, first: tuple[int, int], second: tuple[int, int]) -> dict[str, Any]:
+    def play_turn(
+        self,
+        player_id: str,
+        first: tuple[int, int],
+        second: tuple[int, int],
+        session_id: str = "",
+        client_latency_ms: float | None = None,
+    ) -> dict[str, Any]:
         with self._lock:
+            self._set_player_session_locked(player_id, session_id)
+            self._register_latency_locked(player_id, client_latency_ms)
+
             pending_first = self._pending_first_pick.get(player_id)
             if pending_first and pending_first != first:
                 return {
@@ -499,6 +540,7 @@ class GameEngine:
 
             player = self._players[player_id]
             response_time = max(0.0, time.monotonic() - self._turn_started_monotonic)
+            response_time_ms = response_time * 1000.0
             player.total_response_time += response_time
             player.response_times.append(response_time)
             player.moves += 1
@@ -527,7 +569,10 @@ class GameEngine:
                         "first": {"row": first_row, "col": first_col, "value": first_value},
                         "second": {"row": second_row, "col": second_col, "value": second_value},
                         "matched": True,
+                        "result": "hit",
                         "response_time": round(response_time, 6),
+                        "t_resp_ms": round(response_time_ms, 3),
+                        "lat_red_ms": round(self._average_latency_ms_locked(player_id), 3),
                         "timestamp": utc_now_iso(),
                     }
                 )
@@ -583,7 +628,10 @@ class GameEngine:
                     "first": {"row": first_row, "col": first_col, "value": first_value},
                     "second": {"row": second_row, "col": second_col, "value": second_value},
                     "matched": False,
+                    "result": "miss",
                     "response_time": round(response_time, 6),
+                    "t_resp_ms": round(response_time_ms, 3),
+                    "lat_red_ms": round(self._average_latency_ms_locked(player_id), 3),
                     "timestamp": utc_now_iso(),
                 }
             )
@@ -706,6 +754,8 @@ class GameEngine:
 
         self._status = IN_PROGRESS
         self._started_at = utc_now_iso()
+        self._round_started_monotonic = time.monotonic()
+        self._round_elapsed_ms = 0.0
         self._turn_started_monotonic = time.monotonic()
         self._current_turn_index = 0
 
@@ -727,6 +777,10 @@ class GameEngine:
     def _finish_game_locked(self) -> None:
         self._status = FINISHED
         self._finished_at = utc_now_iso()
+        if self._round_started_monotonic is not None:
+            self._round_elapsed_ms = max(
+                0.0, (time.monotonic() - self._round_started_monotonic) * 1000.0
+            )
         ranking = self._ranking_locked()
         if not ranking:
             self._winners = []
@@ -892,18 +946,177 @@ class GameEngine:
         if self._persisted:
             return
 
+        round_metrics = self._build_round_metrics_locked()
+
         record = {
             "match_id": self._match_id,
+            "id_ron": self._match_id,
             "started_at": self._started_at,
             "finished_at": self._finished_at,
             "rows": self._board_rows,
             "cols": self._board_cols,
+            "tam_tab": f"{self._board_rows}x{self._board_cols}",
+            "niv_dif": self._difficulty_level_locked(),
             "status": self._status,
             "winners": self._winners,
             "players": [
                 self._players[player_id].to_storage_dict() for player_id in self._player_order
             ],
+            "round_metrics": round_metrics,
             "events": list(self._event_history),
         }
         self.storage.save_match(record)
         self._persisted = True
+
+    def _set_player_session_locked(self, player_id: str, session_id: str) -> None:
+        if player_id not in self._players:
+            return
+        cleaned_session = (session_id or "").strip()
+        if cleaned_session:
+            self._player_sessions[player_id] = cleaned_session
+            return
+        if player_id not in self._player_sessions:
+            self._player_sessions[player_id] = str(uuid.uuid4())
+
+    def _register_latency_locked(self, player_id: str, latency_ms: float | None) -> None:
+        if player_id not in self._players or latency_ms is None:
+            return
+        safe_latency = max(0.0, float(latency_ms))
+        samples = self._player_latency_samples.setdefault(player_id, [])
+        samples.append(safe_latency)
+        if len(samples) > 50:
+            del samples[: len(samples) - 50]
+
+    def _average_latency_ms_locked(self, player_id: str) -> float:
+        samples = self._player_latency_samples.get(player_id, [])
+        if not samples:
+            return 0.0
+        return mean(samples)
+
+    def _difficulty_level_locked(self) -> str:
+        if self._board_rows <= 4:
+            return "bajo"
+        if self._board_rows <= 6:
+            return "medio"
+        return "alto"
+
+    def _build_round_metrics_locked(self) -> list[dict[str, Any]]:
+        pairs_total = (self._board_rows * self._board_cols) // 2
+        expected_round_ms = float(pairs_total * 3000)
+        t_ron_ms = round(self._round_elapsed_ms, 3)
+        round_samples: list[dict[str, Any]] = []
+
+        for player_id in self._player_order:
+            player = self._players[player_id]
+            total_moves = player.moves
+            total_hits = player.pairs_found
+            total_errors = max(0, total_moves - total_hits)
+            tasa_aci = (total_hits / total_moves) if total_moves else 0.0
+            max_racha_aci, max_racha_err = self._compute_streaks_locked(player.turn_history)
+            rec_par = self._compute_rec_par_locked(player.turn_history)
+            idx_efi = self._compute_idx_efi_locked(
+                t_ron_ms=t_ron_ms,
+                expected_round_ms=expected_round_ms,
+                tasa_aci=tasa_aci,
+                tot_err=total_errors,
+                total_moves=total_moves,
+            )
+            etiqueta = self._classify_performance_locked(
+                t_ron_ms=t_ron_ms,
+                expected_round_ms=expected_round_ms,
+                tasa_aci=tasa_aci,
+                idx_efi=idx_efi,
+            )
+
+            round_samples.append(
+                {
+                    "id_jug": player_id,
+                    "id_ses": self._player_sessions.get(player_id, ""),
+                    "id_ron": self._match_id,
+                    "niv_dif": self._difficulty_level_locked(),
+                    "tam_tab": f"{self._board_rows}x{self._board_cols}",
+                    "t_resp_ms": [
+                        turn.get("t_resp_ms", round(turn.get("response_time", 0.0) * 1000.0, 3))
+                        for turn in player.turn_history
+                    ],
+                    "t_ron_ms": t_ron_ms,
+                    "tot_aci": total_hits,
+                    "tot_err": total_errors,
+                    "tasa_aci": round(tasa_aci, 6),
+                    "racha_err": max_racha_err,
+                    "racha_aci": max_racha_aci,
+                    "rec_par": round(rec_par, 6),
+                    "tot_ayu": self._player_help_counts.get(player_id, 0),
+                    "lat_red_ms": round(self._average_latency_ms_locked(player_id), 3),
+                    "idx_efi": round(idx_efi, 6),
+                    "desempeno": etiqueta,
+                }
+            )
+        return round_samples
+
+    def _compute_streaks_locked(self, turn_history: list[dict[str, Any]]) -> tuple[int, int]:
+        max_hits = 0
+        max_misses = 0
+        cur_hits = 0
+        cur_misses = 0
+
+        for turn in turn_history:
+            if bool(turn.get("matched")):
+                cur_hits += 1
+                max_hits = max(max_hits, cur_hits)
+                cur_misses = 0
+            else:
+                cur_misses += 1
+                max_misses = max(max_misses, cur_misses)
+                cur_hits = 0
+        return max_hits, max_misses
+
+    def _compute_rec_par_locked(self, turn_history: list[dict[str, Any]]) -> float:
+        seen_positions: set[tuple[int, int]] = set()
+        matched_attempts = 0
+        remembered_hits = 0
+
+        for turn in turn_history:
+            first = turn.get("first", {})
+            second = turn.get("second", {})
+            first_pos = (int(first.get("row", -1)), int(first.get("col", -1)))
+            second_pos = (int(second.get("row", -1)), int(second.get("col", -1)))
+            matched = bool(turn.get("matched"))
+
+            if matched:
+                matched_attempts += 1
+                if first_pos in seen_positions or second_pos in seen_positions:
+                    remembered_hits += 1
+
+            seen_positions.add(first_pos)
+            seen_positions.add(second_pos)
+
+        if matched_attempts == 0:
+            return 0.0
+        return remembered_hits / matched_attempts
+
+    def _compute_idx_efi_locked(
+        self,
+        t_ron_ms: float,
+        expected_round_ms: float,
+        tasa_aci: float,
+        tot_err: int,
+        total_moves: int,
+    ) -> float:
+        speed = min(1.0, expected_round_ms / max(1.0, t_ron_ms))
+        control = 1.0 - min(1.0, (tot_err / max(1, total_moves)))
+        idx = (0.45 * tasa_aci) + (0.35 * speed) + (0.20 * control)
+        return max(0.0, min(1.0, idx))
+
+    def _classify_performance_locked(
+        self,
+        t_ron_ms: float,
+        expected_round_ms: float,
+        tasa_aci: float,
+        idx_efi: float,
+    ) -> str:
+        if idx_efi >= 0.75 and tasa_aci >= 0.70 and t_ron_ms <= expected_round_ms * 1.10:
+            return "alto"
+        if idx_efi >= 0.45 and tasa_aci >= 0.40 and t_ron_ms <= expected_round_ms * 1.80:
+            return "medio"
+        return "bajo"

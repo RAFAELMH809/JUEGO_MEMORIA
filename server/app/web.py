@@ -20,6 +20,8 @@ LOGGER = logging.getLogger("memory.web")
 
 class JoinPayload(BaseModel):
     player_name: str = Field(min_length=1, max_length=40)
+    session_id: str = Field(default="", max_length=80)
+    client_latency_ms: float | None = None
 
 
 class PlayPayload(BaseModel):
@@ -28,12 +30,16 @@ class PlayPayload(BaseModel):
     first_col: int
     second_row: int
     second_col: int
+    session_id: str = Field(default="", max_length=80)
+    client_latency_ms: float | None = None
 
 
 class PreviewPayload(BaseModel):
     player_id: str = Field(min_length=1)
     row: int
     col: int
+    session_id: str = Field(default="", max_length=80)
+    client_latency_ms: float | None = None
 
 
 class AdminBoardSizePayload(BaseModel):
@@ -90,7 +96,11 @@ def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
 
     @app.post("/api/join", response_class=JSONResponse)
     async def api_join(payload: JoinPayload) -> JSONResponse:
-        result = engine.join_game(payload.player_name)
+        result = engine.join_game(
+            payload.player_name,
+            session_id=payload.session_id,
+            client_latency_ms=payload.client_latency_ms,
+        )
         if not result["accepted"]:
             raise HTTPException(status_code=400, detail=result["reason"])
         return JSONResponse(result)
@@ -101,6 +111,8 @@ def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
             payload.player_id,
             (payload.first_row, payload.first_col),
             (payload.second_row, payload.second_col),
+            session_id=payload.session_id,
+            client_latency_ms=payload.client_latency_ms,
         )
         if not result["accepted"]:
             raise HTTPException(status_code=400, detail=result["reason"])
@@ -108,7 +120,13 @@ def create_web_app(engine: GameEngine, settings: Settings) -> FastAPI:
 
     @app.post("/api/preview", response_class=JSONResponse)
     async def api_preview(payload: PreviewPayload) -> JSONResponse:
-        result = engine.preview_first_pick(payload.player_id, payload.row, payload.col)
+        result = engine.preview_first_pick(
+            payload.player_id,
+            payload.row,
+            payload.col,
+            session_id=payload.session_id,
+            client_latency_ms=payload.client_latency_ms,
+        )
         if not result["success"]:
             raise HTTPException(status_code=400, detail=result["reason"])
         return JSONResponse(result)
