@@ -1,1 +1,2857 @@
-[]
+﻿[
+    {
+        "match_id":  "05208c3e-6527-4192-a98e-b2859c3ec94a",
+        "id_ron":  "05208c3e-6527-4192-a98e-b2859c3ec94a",
+        "started_at":  "2026-04-23T00:28:19.149036+00:00",
+        "finished_at":  "2026-04-23T00:30:35.234502+00:00",
+        "rows":  4,
+        "cols":  4,
+        "tam_tab":  "4x4",
+        "niv_dif":  "bajo",
+        "status":  "FINISHED",
+        "winners":  [
+                        "Abraham"
+                    ],
+        "players":  [
+                        {
+                            "player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1",
+                            "name":  "Antonio Ortiz",
+                            "score":  3,
+                            "moves":  6,
+                            "pairs_found":  3,
+                            "total_response_time":  26.676173,
+                            "average_response_time":  4.446029,
+                            "response_times":  [
+                                                   5.578117,
+                                                   2.943077,
+                                                   2.487316,
+                                                   8.618949,
+                                                   4.640976,
+                                                   2.407737
+                                               ],
+                            "is_current_turn":  false,
+                            "turn_history":  [
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ¥¥"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  2,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸ‡"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  5.578117,
+                                                     "t_resp_ms":  5578.117,
+                                                     "lat_red_ms":  200.0,
+                                                     "timestamp":  "2026-04-23T00:28:24.727419+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸ“"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  0,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸŽ"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  2.943077,
+                                                     "t_resp_ms":  2943.077,
+                                                     "lat_red_ms":  200.0,
+                                                     "timestamp":  "2026-04-23T00:28:49.170313+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  0,
+                                                                   "col":  1,
+                                                                   "value":  "ðŸŽ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  0,
+                                                                    "col":  0,
+                                                                    "value":  "ðŸŽ"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  2.487316,
+                                                     "t_resp_ms":  2487.316,
+                                                     "lat_red_ms":  200.0,
+                                                     "timestamp":  "2026-04-23T00:29:22.903633+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  2,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸŒ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸŒ"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  8.618949,
+                                                     "t_resp_ms":  8618.949,
+                                                     "lat_red_ms":  200.0,
+                                                     "timestamp":  "2026-04-23T00:29:31.522845+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  0,
+                                                                   "col":  3,
+                                                                   "value":  "ðŸ¥¥"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  2,
+                                                                    "value":  "ðŸ¥¥"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  4.640976,
+                                                     "t_resp_ms":  4640.976,
+                                                     "lat_red_ms":  200.0,
+                                                     "timestamp":  "2026-04-23T00:29:36.164107+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  0,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ’"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  0,
+                                                                    "value":  "ðŸ“"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  2.407737,
+                                                     "t_resp_ms":  2407.737,
+                                                     "lat_red_ms":  200.0,
+                                                     "timestamp":  "2026-04-23T00:29:38.572421+00:00"
+                                                 }
+                                             ]
+                        },
+                        {
+                            "player_id":  "012fc169-fd76-40c7-8e04-05637af9af32",
+                            "name":  "Uriel",
+                            "score":  1,
+                            "moves":  4,
+                            "pairs_found":  1,
+                            "total_response_time":  33.079376,
+                            "average_response_time":  8.269844,
+                            "response_times":  [
+                                                   4.327925,
+                                                   4.724021,
+                                                   18.417012,
+                                                   5.610418
+                                               ],
+                            "is_current_turn":  false,
+                            "turn_history":  [
+                                                 {
+                                                     "first":  {
+                                                                   "row":  0,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸŽ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸ’"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  4.327925,
+                                                     "t_resp_ms":  4327.925,
+                                                     "lat_red_ms":  55.12,
+                                                     "timestamp":  "2026-04-23T00:28:30.805960+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ¥¥"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  3,
+                                                                    "value":  "ðŸ¥"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  4.724021,
+                                                     "t_resp_ms":  4724.021,
+                                                     "lat_red_ms":  60.006,
+                                                     "timestamp":  "2026-04-23T00:28:55.644847+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸ“"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  0,
+                                                                    "value":  "ðŸ“"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  18.417012,
+                                                     "t_resp_ms":  18417.012,
+                                                     "lat_red_ms":  59.909,
+                                                     "timestamp":  "2026-04-23T00:30:00.176269+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ‡"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸ’"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  5.610418,
+                                                     "t_resp_ms":  5610.418,
+                                                     "lat_red_ms":  60.248,
+                                                     "timestamp":  "2026-04-23T00:30:05.786972+00:00"
+                                                 }
+                                             ]
+                        },
+                        {
+                            "player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126",
+                            "name":  "Jeshua",
+                            "score":  0,
+                            "moves":  3,
+                            "pairs_found":  0,
+                            "total_response_time":  20.893603,
+                            "average_response_time":  6.964534,
+                            "response_times":  [
+                                                   5.789791,
+                                                   4.276213,
+                                                   10.827599
+                                               ],
+                            "is_current_turn":  false,
+                            "turn_history":  [
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸ“"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  2,
+                                                                    "value":  "ðŸ¥¥"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  5.789791,
+                                                     "t_resp_ms":  5789.791,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T00:28:38.346345+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  2,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  0,
+                                                                    "col":  0,
+                                                                    "value":  "ðŸŽ"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  4.276213,
+                                                     "t_resp_ms":  4276.213,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T00:29:01.671653+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ‡"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  3,
+                                                                    "value":  "ðŸ¥"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  10.827599,
+                                                     "t_resp_ms":  10827.599,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T00:30:18.365334+00:00"
+                                                 }
+                                             ]
+                        },
+                        {
+                            "player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8",
+                            "name":  "Abraham",
+                            "score":  4,
+                            "moves":  6,
+                            "pairs_found":  4,
+                            "total_response_time":  30.880055,
+                            "average_response_time":  5.146676,
+                            "response_times":  [
+                                                   3.117088,
+                                                   11.500624,
+                                                   2.447661,
+                                                   9.892499,
+                                                   2.591143,
+                                                   1.33104
+                                               ],
+                            "is_current_turn":  false,
+                            "turn_history":  [
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ‡"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  3,
+                                                                    "value":  "ðŸ"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  3.117088,
+                                                     "t_resp_ms":  3117.088,
+                                                     "lat_red_ms":  491.246,
+                                                     "timestamp":  "2026-04-23T00:28:43.214159+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  3,
+                                                                   "value":  "ðŸ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  2,
+                                                                    "col":  0,
+                                                                    "value":  "ðŸ"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  11.500624,
+                                                     "t_resp_ms":  11500.624,
+                                                     "lat_red_ms":  483.901,
+                                                     "timestamp":  "2026-04-23T00:29:14.922834+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  0,
+                                                                   "col":  3,
+                                                                   "value":  "ðŸ¥¥"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸ’"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  2.447661,
+                                                     "t_resp_ms":  2447.661,
+                                                     "lat_red_ms":  474.536,
+                                                     "timestamp":  "2026-04-23T00:29:17.370776+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  1,
+                                                                   "value":  "ðŸ’"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  0,
+                                                                    "col":  2,
+                                                                    "value":  "ðŸ’"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  9.892499,
+                                                     "t_resp_ms":  9892.499,
+                                                     "lat_red_ms":  464.418,
+                                                     "timestamp":  "2026-04-23T00:30:31.311566+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  2,
+                                                                   "col":  3,
+                                                                   "value":  "ðŸ¥"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  3,
+                                                                    "value":  "ðŸ¥"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  2.591143,
+                                                     "t_resp_ms":  2591.143,
+                                                     "lat_red_ms":  455.261,
+                                                     "timestamp":  "2026-04-23T00:30:33.903054+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  2,
+                                                                   "col":  1,
+                                                                   "value":  "ðŸ‡"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  2,
+                                                                    "value":  "ðŸ‡"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  1.33104,
+                                                     "t_resp_ms":  1331.04,
+                                                     "lat_red_ms":  446.981,
+                                                     "timestamp":  "2026-04-23T00:30:35.234445+00:00"
+                                                 }
+                                             ]
+                        }
+                    ],
+        "round_metrics":  [
+                              {
+                                  "id_jug":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1",
+                                  "id_ses":  "sid-moaqlykc-hehm786bgg",
+                                  "id_ron":  "05208c3e-6527-4192-a98e-b2859c3ec94a",
+                                  "niv_dif":  "bajo",
+                                  "tam_tab":  "4x4",
+                                  "t_resp_ms":  [
+                                                    5578.117,
+                                                    2943.077,
+                                                    2487.316,
+                                                    8618.949,
+                                                    4640.976,
+                                                    2407.737
+                                                ],
+                                  "t_ron_ms":  130789.3,
+                                  "tot_aci":  3,
+                                  "tot_err":  3,
+                                  "tasa_aci":  0.5,
+                                  "racha_err":  2,
+                                  "racha_aci":  3,
+                                  "rec_par":  0.666667,
+                                  "tot_ayu":  6,
+                                  "lat_red_ms":  200.0,
+                                  "idx_efi":  0.389225,
+                                  "desempeno":  "bajo"
+                              },
+                              {
+                                  "id_jug":  "012fc169-fd76-40c7-8e04-05637af9af32",
+                                  "id_ses":  "sid-moaqmwtd-v5hwwpm8d7",
+                                  "id_ron":  "05208c3e-6527-4192-a98e-b2859c3ec94a",
+                                  "niv_dif":  "bajo",
+                                  "tam_tab":  "4x4",
+                                  "t_resp_ms":  [
+                                                    4327.925,
+                                                    4724.021,
+                                                    18417.012,
+                                                    5610.418
+                                                ],
+                                  "t_ron_ms":  130789.3,
+                                  "tot_aci":  1,
+                                  "tot_err":  3,
+                                  "tasa_aci":  0.25,
+                                  "racha_err":  2,
+                                  "racha_aci":  1,
+                                  "rec_par":  0.0,
+                                  "tot_ayu":  4,
+                                  "lat_red_ms":  60.248,
+                                  "idx_efi":  0.226725,
+                                  "desempeno":  "bajo"
+                              },
+                              {
+                                  "id_jug":  "b6c11959-4355-41a3-b30f-e4d10b7cf126",
+                                  "id_ses":  "sid-moaqnn4d-a15ruoshdy",
+                                  "id_ron":  "05208c3e-6527-4192-a98e-b2859c3ec94a",
+                                  "niv_dif":  "bajo",
+                                  "tam_tab":  "4x4",
+                                  "t_resp_ms":  [
+                                                    5789.791,
+                                                    4276.213,
+                                                    10827.599
+                                                ],
+                                  "t_ron_ms":  130789.3,
+                                  "tot_aci":  0,
+                                  "tot_err":  3,
+                                  "tasa_aci":  0.0,
+                                  "racha_err":  3,
+                                  "racha_aci":  0,
+                                  "rec_par":  0.0,
+                                  "tot_ayu":  3,
+                                  "lat_red_ms":  100.0,
+                                  "idx_efi":  0.064225,
+                                  "desempeno":  "bajo"
+                              },
+                              {
+                                  "id_jug":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8",
+                                  "id_ses":  "sid-moaqnftd-fxnmpe5hn1",
+                                  "id_ron":  "05208c3e-6527-4192-a98e-b2859c3ec94a",
+                                  "niv_dif":  "bajo",
+                                  "tam_tab":  "4x4",
+                                  "t_resp_ms":  [
+                                                    3117.088,
+                                                    11500.624,
+                                                    2447.661,
+                                                    9892.499,
+                                                    2591.143,
+                                                    1331.04
+                                                ],
+                                  "t_ron_ms":  130789.3,
+                                  "tot_aci":  4,
+                                  "tot_err":  2,
+                                  "tasa_aci":  0.666667,
+                                  "racha_err":  1,
+                                  "racha_aci":  3,
+                                  "rec_par":  0.75,
+                                  "tot_ayu":  6,
+                                  "lat_red_ms":  446.981,
+                                  "idx_efi":  0.497559,
+                                  "desempeno":  "bajo"
+                              }
+                          ],
+        "events":  [
+                       {
+                           "event_id":  "5b1e6efb-bd07-485c-bdfd-0d5acfee4771",
+                           "timestamp":  "2026-04-23T00:27:38.125529+00:00",
+                           "event_type":  "SYSTEM_MESSAGE",
+                           "message":  "Nueva partida creada. Esperando al menos 2 jugadores.",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "383eea90-cf55-4f02-99d3-1e3626167e0e",
+                           "timestamp":  "2026-04-23T00:27:54.412742+00:00",
+                           "event_type":  "SYSTEM_MESSAGE",
+                           "message":  "Admin fijo tablero manualmente en 4x4",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "24c1d505-1ddd-4c02-a821-2abafa10ab1d",
+                           "timestamp":  "2026-04-23T00:28:01.807308+00:00",
+                           "event_type":  "PLAYER_JOINED",
+                           "message":  "Jugador Antonio Ortiz se unio a la partida",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "c5dc5cc9-030e-4362-9b7d-7f5a3aba1e84",
+                           "timestamp":  "2026-04-23T00:28:02.051947+00:00",
+                           "event_type":  "PLAYER_JOINED",
+                           "message":  "Jugador Uriel se unio a la partida",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "055f4ed9-e497-4508-a02a-d1af22cc98c2",
+                           "timestamp":  "2026-04-23T00:28:09.690425+00:00",
+                           "event_type":  "PLAYER_JOINED",
+                           "message":  "Jugador Jeshua se unio a la partida",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "7c6a803b-7088-46c1-950f-e632263dfb90",
+                           "timestamp":  "2026-04-23T00:28:14.673937+00:00",
+                           "event_type":  "PLAYER_JOINED",
+                           "message":  "Jugador Abraham se unio a la partida",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "c4a529e8-b83e-4cd1-a1bb-6bf5f0075301",
+                           "timestamp":  "2026-04-23T00:28:19.149070+00:00",
+                           "event_type":  "GAME_STARTED",
+                           "message":  "Partida iniciada con 4 jugadores. Turno para Antonio Ortiz",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "04db5ab2-6e03-4acb-ba5e-b0118c144cf9",
+                           "timestamp":  "2026-04-23T00:28:19.149258+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno inicial para Antonio Ortiz",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "185ef5e9-951e-4c5a-b007-372f99ddd5de",
+                           "timestamp":  "2026-04-23T00:28:24.727186+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Antonio Ortiz jugo (1,2) y (2,1)",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "70cf5b54-6b1d-4b1a-84dc-fa8cc9fdd73a",
+                           "timestamp":  "2026-04-23T00:28:24.727446+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Antonio Ortiz fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "38ec8491-453d-4367-a4d7-78043cf11c16",
+                           "timestamp":  "2026-04-23T00:28:26.477910+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Uriel",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "f5a684ae-2814-4bea-8796-2c55db0f2a1f",
+                           "timestamp":  "2026-04-23T00:28:26.478369+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Uriel",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "edba0e53-604f-4fc7-a556-d82eb5ab08d0",
+                           "timestamp":  "2026-04-23T00:28:30.805787+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Uriel jugo (0,0) y (1,1)",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "769473b7-6e6a-48bf-b58d-d0511c449ada",
+                           "timestamp":  "2026-04-23T00:28:30.805981+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Uriel fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "0fa1d152-a52b-411f-802d-8a7fa4262b16",
+                           "timestamp":  "2026-04-23T00:28:32.556314+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Jeshua",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "85b84609-632c-418f-9126-aae2fa246be6",
+                           "timestamp":  "2026-04-23T00:28:32.556509+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Jeshua",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "175cce61-6d2e-407a-939c-3ddb8380b846",
+                           "timestamp":  "2026-04-23T00:28:38.346170+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (3,0) y (1,2)",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "368eb6e5-8d96-48a7-866b-66aab1b2ee9e",
+                           "timestamp":  "2026-04-23T00:28:38.346368+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Jeshua fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "ceb92483-3695-4769-9866-c82cb3fe526a",
+                           "timestamp":  "2026-04-23T00:28:40.096872+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Abraham",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "5ecd40ab-88a9-4829-a538-6202fc78a5b2",
+                           "timestamp":  "2026-04-23T00:28:40.097564+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Abraham",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "0228751d-0de8-4041-b237-96be3f31c018",
+                           "timestamp":  "2026-04-23T00:28:43.213945+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Abraham jugo (3,2) y (1,3)",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "67fa49e6-0f41-4134-9451-92ec6b6a2e8c",
+                           "timestamp":  "2026-04-23T00:28:43.214183+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Abraham fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "a8098cae-d24c-499c-97c0-465b1be58c02",
+                           "timestamp":  "2026-04-23T00:28:44.964555+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Antonio Ortiz",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "2aa242e3-86aa-4e99-b452-48a6828f26e4",
+                           "timestamp":  "2026-04-23T00:28:44.964814+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Antonio Ortiz",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "1d39db38-31d2-493e-b38d-385fd925c966",
+                           "timestamp":  "2026-04-23T00:28:49.170126+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Antonio Ortiz jugo (3,0) y (0,1)",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "1c35ba07-982c-42d5-b0b7-f8038ab16fad",
+                           "timestamp":  "2026-04-23T00:28:49.170334+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Antonio Ortiz fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "ca2c54b3-7228-46bc-98c4-85fb40a55817",
+                           "timestamp":  "2026-04-23T00:28:50.920674+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Uriel",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "e0ed81c0-725a-40cd-be88-f4a1c00cb58a",
+                           "timestamp":  "2026-04-23T00:28:50.920903+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Uriel",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "652f914b-a923-41b4-a4c7-473ddda0286e",
+                           "timestamp":  "2026-04-23T00:28:55.644669+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Uriel jugo (1,2) y (3,3)",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "ac8dd92a-428f-41a3-bf92-51e816e14ded",
+                           "timestamp":  "2026-04-23T00:28:55.644867+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Uriel fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "b0fe5726-6942-47bd-b880-3b78fd6c63a9",
+                           "timestamp":  "2026-04-23T00:28:57.395234+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Jeshua",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "71f871de-420e-4d8d-8716-a05cd8f59714",
+                           "timestamp":  "2026-04-23T00:28:57.395848+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Jeshua",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "cfc6492e-0010-4908-a006-edfe7532df85",
+                           "timestamp":  "2026-04-23T00:29:01.671420+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (2,0) y (0,0)",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "3268a656-3b23-418f-ba6d-e0f39d83638d",
+                           "timestamp":  "2026-04-23T00:29:01.671679+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Jeshua fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "4f1107f6-2113-4ef9-b69f-fdac279ff714",
+                           "timestamp":  "2026-04-23T00:29:03.422031+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Abraham",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "3e773255-74dd-4094-a663-8a6095bb2bcc",
+                           "timestamp":  "2026-04-23T00:29:03.422711+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Abraham",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "ee4ad41f-6fea-47a7-aec5-68e3a1c12fe9",
+                           "timestamp":  "2026-04-23T00:29:14.922626+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Abraham jugo (1,3) y (2,0)",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "af1366ca-e523-4212-8921-fc430a3b4210",
+                           "timestamp":  "2026-04-23T00:29:14.922857+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Abraham encontro pareja ðŸ y conserva el turno",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "47ad26b5-a122-40ea-9fe8-c479cb0546db",
+                           "timestamp":  "2026-04-23T00:29:14.922906+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Abraham",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "77cfb316-c3dc-40e2-9df4-8fe853bbc7a0",
+                           "timestamp":  "2026-04-23T00:29:17.370574+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Abraham jugo (0,3) y (1,1)",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "586a0ebc-e2e8-4d3e-b953-e1ba9b39934b",
+                           "timestamp":  "2026-04-23T00:29:17.370798+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Abraham fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "206bcc53-c327-4f08-acd3-c27ff8d9cc0d",
+                           "timestamp":  "2026-04-23T00:29:20.416173+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Antonio Ortiz",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "02f27d6d-e21d-4b12-a734-de272c8aba96",
+                           "timestamp":  "2026-04-23T00:29:20.416441+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Antonio Ortiz",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "294b67e2-8af1-47ec-8842-d98dbaed3516",
+                           "timestamp":  "2026-04-23T00:29:22.903454+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Antonio Ortiz jugo (0,1) y (0,0)",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "b6278776-3128-4ddc-bf0e-c07b0aedfb54",
+                           "timestamp":  "2026-04-23T00:29:22.903653+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Antonio Ortiz encontro pareja ðŸŽ y conserva el turno",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "e8212a1c-3cbd-4607-a9f8-ec9375193264",
+                           "timestamp":  "2026-04-23T00:29:22.903700+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Antonio Ortiz",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "0c8eda3d-d46b-4fb1-8473-5665979e9975",
+                           "timestamp":  "2026-04-23T00:29:31.522656+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Antonio Ortiz jugo (2,2) y (3,1)",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "5157f72a-ee54-4368-a645-15e988c1754c",
+                           "timestamp":  "2026-04-23T00:29:31.522866+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Antonio Ortiz encontro pareja ðŸŒ y conserva el turno",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "66527d4f-a799-4d8c-a8d5-84610abbc395",
+                           "timestamp":  "2026-04-23T00:29:31.522913+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Antonio Ortiz",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "da17a4fd-a6e8-4a4e-962c-554d0ed513b2",
+                           "timestamp":  "2026-04-23T00:29:36.163898+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Antonio Ortiz jugo (0,3) y (1,2)",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "0700bbd2-4313-4f1a-a26e-3286fb743a3c",
+                           "timestamp":  "2026-04-23T00:29:36.164407+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Antonio Ortiz encontro pareja ðŸ¥¥ y conserva el turno",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "d6b666da-5bee-4a12-9b06-f98a6ee23689",
+                           "timestamp":  "2026-04-23T00:29:36.164485+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Antonio Ortiz",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "292ec3c2-e794-4670-83e5-c8cd5d2db853",
+                           "timestamp":  "2026-04-23T00:29:38.572226+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Antonio Ortiz jugo (0,2) y (3,0)",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "e737c18a-5648-49f3-8558-eb69e386f893",
+                           "timestamp":  "2026-04-23T00:29:38.572443+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Antonio Ortiz fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "3b168fb5-423c-4d89-8df8-acf07b7e73a1"
+                       },
+                       {
+                           "event_id":  "a1864c0f-7fe3-485a-a04f-81e2f7e97dc0",
+                           "timestamp":  "2026-04-23T00:29:40.323285+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Uriel",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "c1d1e3f3-cf95-48e1-b601-7fe63e3aae11",
+                           "timestamp":  "2026-04-23T00:29:40.324265+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Uriel",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "14edfbff-ed1f-4923-9aa8-4e8126ed8c5f",
+                           "timestamp":  "2026-04-23T00:30:00.176064+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Uriel jugo (1,0) y (3,0)",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "7d2403ad-c4c7-4e05-b8c4-cc61b95cf69d",
+                           "timestamp":  "2026-04-23T00:30:00.176290+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Uriel encontro pareja ðŸ“ y conserva el turno",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "626629ea-0140-4b93-86ee-09e7bcb94423",
+                           "timestamp":  "2026-04-23T00:30:00.176342+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Uriel",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "1e40474e-5d92-4f9d-a0ab-91f092e3269a",
+                           "timestamp":  "2026-04-23T00:30:05.786768+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Uriel jugo (3,2) y (1,1)",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "855b8a3e-0f88-409f-b134-2f3327457a3d",
+                           "timestamp":  "2026-04-23T00:30:05.786993+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Uriel fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "012fc169-fd76-40c7-8e04-05637af9af32"
+                       },
+                       {
+                           "event_id":  "db01202a-aa84-48cb-b7a1-95c55663e10f",
+                           "timestamp":  "2026-04-23T00:30:07.537395+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Jeshua",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "27846f07-5d5b-4569-9bcd-2c3f67a43fde",
+                           "timestamp":  "2026-04-23T00:30:07.537756+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Jeshua",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "f09bdde6-709c-4677-a518-d09a677f5f90",
+                           "timestamp":  "2026-04-23T00:30:18.364968+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (3,2) y (3,3)",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "6cac3373-59b0-434d-a903-7a7a1d6e0e0c",
+                           "timestamp":  "2026-04-23T00:30:18.365387+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Jeshua fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "b6c11959-4355-41a3-b30f-e4d10b7cf126"
+                       },
+                       {
+                           "event_id":  "cd9d5a5b-f86d-47b0-bb36-d10f11ecb578",
+                           "timestamp":  "2026-04-23T00:30:20.115803+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Abraham",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "634897c9-4601-4703-b020-ebfcace0e047",
+                           "timestamp":  "2026-04-23T00:30:20.116466+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Abraham",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "d8714da5-8191-4a74-ade6-83333f6dfebe",
+                           "timestamp":  "2026-04-23T00:30:31.311142+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Abraham jugo (1,1) y (0,2)",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "6f253d81-555f-4d9f-baac-1ea728fd5ab8",
+                           "timestamp":  "2026-04-23T00:30:31.311614+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Abraham encontro pareja ðŸ’ y conserva el turno",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "b04b05e6-e15b-4cef-9633-688ec32b955d",
+                           "timestamp":  "2026-04-23T00:30:31.311688+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Abraham",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "9bb534e6-cfb9-4b22-a6da-88bd80a98454",
+                           "timestamp":  "2026-04-23T00:30:33.902834+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Abraham jugo (2,3) y (3,3)",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "b6d106d5-0397-4bce-bdf5-5a7b49b0f788",
+                           "timestamp":  "2026-04-23T00:30:33.903077+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Abraham encontro pareja ðŸ¥ y conserva el turno",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "a7994e6f-be33-4dd2-a472-24137fa227f2",
+                           "timestamp":  "2026-04-23T00:30:33.903139+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Abraham",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "707f48e6-6934-478f-86d8-23c3b7fbe56a",
+                           "timestamp":  "2026-04-23T00:30:35.234206+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Abraham jugo (2,1) y (3,2)",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "3cc4577d-653a-44b3-8dcd-6add99193134",
+                           "timestamp":  "2026-04-23T00:30:35.234466+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Abraham encontro pareja ðŸ‡ y conserva el turno",
+                           "actor_player_id":  "050b201d-df7d-4ac3-be46-dbe0615d4aa8"
+                       },
+                       {
+                           "event_id":  "d115d6d3-6740-4d18-81c2-de1b5092a029",
+                           "timestamp":  "2026-04-23T00:30:35.234534+00:00",
+                           "event_type":  "GAME_OVER",
+                           "message":  "Partida finalizada. Todas las parejas fueron encontradas.",
+                           "actor_player_id":  ""
+                       }
+                   ]
+    },
+    {
+        "match_id":  "7eb93f80-3876-4fd5-88b0-1e9b93f04333",
+        "id_ron":  "7eb93f80-3876-4fd5-88b0-1e9b93f04333",
+        "started_at":  "2026-04-23T00:47:06.087513+00:00",
+        "finished_at":  "2026-04-23T00:48:19.649092+00:00",
+        "rows":  4,
+        "cols":  4,
+        "tam_tab":  "4x4",
+        "niv_dif":  "bajo",
+        "status":  "FINISHED",
+        "winners":  [
+                        "Rafael"
+                    ],
+        "players":  [
+                        {
+                            "player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef",
+                            "name":  "Rafael",
+                            "score":  5,
+                            "moves":  9,
+                            "pairs_found":  5,
+                            "total_response_time":  30.510972,
+                            "average_response_time":  3.390108,
+                            "response_times":  [
+                                                   4.921021,
+                                                   2.167468,
+                                                   2.683665,
+                                                   4.334008,
+                                                   3.550893,
+                                                   4.810947,
+                                                   2.668574,
+                                                   3.832859,
+                                                   1.541538
+                                               ],
+                            "is_current_turn":  false,
+                            "turn_history":  [
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  1,
+                                                                   "value":  "ðŸ¥¥"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  2,
+                                                                    "value":  "ðŸ‡"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  4.921021,
+                                                     "t_resp_ms":  4921.021,
+                                                     "lat_red_ms":  50.0,
+                                                     "timestamp":  "2026-04-23T00:47:11.009805+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  0,
+                                                                   "col":  1,
+                                                                   "value":  "ðŸŽ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  2,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸŽ"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  2.167468,
+                                                     "t_resp_ms":  2167.468,
+                                                     "lat_red_ms":  50.0,
+                                                     "timestamp":  "2026-04-23T00:47:20.825501+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ‡"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸ¥¥"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  2.683665,
+                                                     "t_resp_ms":  2683.665,
+                                                     "lat_red_ms":  50.0,
+                                                     "timestamp":  "2026-04-23T00:47:23.509952+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  1,
+                                                                   "value":  "ðŸ’"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  2,
+                                                                    "col":  3,
+                                                                    "value":  "ðŸŒ"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  4.334008,
+                                                     "t_resp_ms":  4334.008,
+                                                     "lat_red_ms":  50.0,
+                                                     "timestamp":  "2026-04-23T00:47:37.229216+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ’"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸ’"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  3.550893,
+                                                     "t_resp_ms":  3550.893,
+                                                     "lat_red_ms":  50.0,
+                                                     "timestamp":  "2026-04-23T00:47:54.241596+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  0,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸ¥"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  3,
+                                                                    "value":  "ðŸ¥"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  4.810947,
+                                                     "t_resp_ms":  4810.947,
+                                                     "lat_red_ms":  50.0,
+                                                     "timestamp":  "2026-04-23T00:47:59.053497+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ‡"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  2,
+                                                                    "col":  2,
+                                                                    "value":  "ðŸ"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  2.668574,
+                                                     "t_resp_ms":  2668.574,
+                                                     "lat_red_ms":  50.0,
+                                                     "timestamp":  "2026-04-23T00:48:02.030166+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  2,
+                                                                    "col":  2,
+                                                                    "value":  "ðŸ"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  3.832859,
+                                                     "t_resp_ms":  3832.859,
+                                                     "lat_red_ms":  50.0,
+                                                     "timestamp":  "2026-04-23T00:48:18.106192+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  0,
+                                                                   "col":  3,
+                                                                   "value":  "ðŸ“"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  0,
+                                                                    "value":  "ðŸ“"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  1.541538,
+                                                     "t_resp_ms":  1541.538,
+                                                     "lat_red_ms":  50.0,
+                                                     "timestamp":  "2026-04-23T00:48:19.648829+00:00"
+                                                 }
+                                             ]
+                        },
+                        {
+                            "player_id":  "72dab331-1889-4e02-aeba-696e295deaf7",
+                            "name":  "Jeshua",
+                            "score":  3,
+                            "moves":  7,
+                            "pairs_found":  3,
+                            "total_response_time":  28.324474,
+                            "average_response_time":  4.046353,
+                            "response_times":  [
+                                                   4.139133,
+                                                   5.499966,
+                                                   4.46056,
+                                                   5.496242,
+                                                   2.813515,
+                                                   3.280184,
+                                                   2.634874
+                                               ],
+                            "is_current_turn":  false,
+                            "turn_history":  [
+                                                 {
+                                                     "first":  {
+                                                                   "row":  2,
+                                                                   "col":  1,
+                                                                   "value":  "ðŸŽ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  0,
+                                                                    "col":  0,
+                                                                    "value":  "ðŸ¥"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  4.139133,
+                                                     "t_resp_ms":  4139.133,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T00:47:16.905678+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  3,
+                                                                    "value":  "ðŸ¥¥"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  5.499966,
+                                                     "t_resp_ms":  5499.966,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T00:47:31.142712+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  2,
+                                                                   "col":  3,
+                                                                   "value":  "ðŸŒ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  0,
+                                                                    "col":  2,
+                                                                    "value":  "ðŸŒ"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  4.46056,
+                                                     "t_resp_ms":  4460.56,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T00:47:43.441484+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ‡"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸ¥¥"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  5.496242,
+                                                     "t_resp_ms":  5496.242,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T00:47:48.938782+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  1,
+                                                                   "value":  "ðŸ¥¥"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  3,
+                                                                    "value":  "ðŸ¥¥"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  2.813515,
+                                                     "t_resp_ms":  2813.515,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T00:48:06.602144+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  2,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸ‡"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  2,
+                                                                    "value":  "ðŸ‡"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  3.280184,
+                                                     "t_resp_ms":  3280.184,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T00:48:09.883642+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸ“"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  0,
+                                                                    "value":  "ðŸ"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  2.634874,
+                                                     "t_resp_ms":  2634.874,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T00:48:12.519412+00:00"
+                                                 }
+                                             ]
+                        }
+                    ],
+        "round_metrics":  [
+                              {
+                                  "id_jug":  "cdaf0e09-8761-446b-987d-c88db19a9aef",
+                                  "id_ses":  "sid-moaqlykc-hehm786bgg",
+                                  "id_ron":  "7eb93f80-3876-4fd5-88b0-1e9b93f04333",
+                                  "niv_dif":  "bajo",
+                                  "tam_tab":  "4x4",
+                                  "t_resp_ms":  3390.108,
+                                  "t_resp_ms_hist":  [
+                                                         4921.021,
+                                                         2167.468,
+                                                         2683.665,
+                                                         4334.008,
+                                                         3550.893,
+                                                         4810.947,
+                                                         2668.574,
+                                                         3832.859,
+                                                         1541.538
+                                                     ],
+                                  "t_ron_ms":  72874.905,
+                                  "tot_aci":  5,
+                                  "tot_err":  4,
+                                  "tasa_aci":  0.555556,
+                                  "racha_err":  2,
+                                  "racha_aci":  2,
+                                  "rec_par":  0.4,
+                                  "tot_ayu":  9,
+                                  "lat_red_ms":  50.0,
+                                  "idx_efi":  0.476377,
+                                  "desempeno":  "bajo"
+                              },
+                              {
+                                  "id_jug":  "72dab331-1889-4e02-aeba-696e295deaf7",
+                                  "id_ses":  "sid-moaqnn4d-a15ruoshdy",
+                                  "id_ron":  "7eb93f80-3876-4fd5-88b0-1e9b93f04333",
+                                  "niv_dif":  "bajo",
+                                  "tam_tab":  "4x4",
+                                  "t_resp_ms":  4046.353,
+                                  "t_resp_ms_hist":  [
+                                                         4139.133,
+                                                         5499.966,
+                                                         4460.56,
+                                                         5496.242,
+                                                         2813.515,
+                                                         3280.184,
+                                                         2634.874
+                                                     ],
+                                  "t_ron_ms":  72874.905,
+                                  "tot_aci":  3,
+                                  "tot_err":  4,
+                                  "tasa_aci":  0.428571,
+                                  "racha_err":  2,
+                                  "racha_aci":  2,
+                                  "rec_par":  0.666667,
+                                  "tot_ayu":  7,
+                                  "lat_red_ms":  100.0,
+                                  "idx_efi":  0.393837,
+                                  "desempeno":  "bajo"
+                              }
+                          ],
+        "events":  [
+                       {
+                           "event_id":  "90026121-b759-4011-8aa6-a0bd5c8ed110",
+                           "timestamp":  "2026-04-23T00:46:54.100760+00:00",
+                           "event_type":  "SYSTEM_MESSAGE",
+                           "message":  "Nueva partida creada. Esperando al menos 2 jugadores.",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "eb1d4310-a992-4aa3-a7e3-9c6acf08530b",
+                           "timestamp":  "2026-04-23T00:46:56.503199+00:00",
+                           "event_type":  "SYSTEM_MESSAGE",
+                           "message":  "Admin fijo tablero manualmente en 4x4",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "776db120-e380-4b4d-9b9a-e6931e5f2320",
+                           "timestamp":  "2026-04-23T00:47:01.084119+00:00",
+                           "event_type":  "PLAYER_JOINED",
+                           "message":  "Jugador Rafael se unio a la partida",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "e557af0f-78b8-4fef-85f8-fbfb0f37a13c",
+                           "timestamp":  "2026-04-23T00:47:03.454339+00:00",
+                           "event_type":  "PLAYER_JOINED",
+                           "message":  "Jugador Jeshua se unio a la partida",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "f7489a93-6b9c-43b3-8095-39ea33020208",
+                           "timestamp":  "2026-04-23T00:47:06.087543+00:00",
+                           "event_type":  "GAME_STARTED",
+                           "message":  "Partida iniciada con 2 jugadores. Turno para Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "974a35e3-eb7f-49cd-a0fa-3c14fa55485c",
+                           "timestamp":  "2026-04-23T00:47:06.087664+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno inicial para Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "018c41e6-9e51-4143-8d5c-caa72ef23c6a",
+                           "timestamp":  "2026-04-23T00:47:11.008606+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Rafael jugo (3,1) y (1,2)",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "f03c2de0-17a9-4913-8fa7-202bfc3ce547",
+                           "timestamp":  "2026-04-23T00:47:11.009948+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Rafael fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "ce878c43-59c8-42b2-989e-b575a30b29df",
+                           "timestamp":  "2026-04-23T00:47:12.765910+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Jeshua",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "e6f6508d-7218-43d7-bd32-75b58fddc43d",
+                           "timestamp":  "2026-04-23T00:47:12.766427+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Jeshua",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "6920df20-4570-48da-abab-8659dbb9b2c4",
+                           "timestamp":  "2026-04-23T00:47:16.905062+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (2,1) y (0,0)",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "23073f9f-956a-4de9-b85d-4d8fc38a5bc6",
+                           "timestamp":  "2026-04-23T00:47:16.905798+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Jeshua fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "6d8ff5f3-498c-4ce1-9151-411da8cf2d11",
+                           "timestamp":  "2026-04-23T00:47:18.657368+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "4e52882b-f55c-4b10-8b0f-67dc8c5c4393",
+                           "timestamp":  "2026-04-23T00:47:18.657789+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "701f9264-f143-4bce-b1a8-20cd7c1ac53b",
+                           "timestamp":  "2026-04-23T00:47:20.824829+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Rafael jugo (0,1) y (2,1)",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "4fc1750f-3e42-48c0-8236-a6d03862bdac",
+                           "timestamp":  "2026-04-23T00:47:20.825652+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Rafael encontro pareja ðŸŽ y conserva el turno",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "e8b04419-321f-4208-9910-ca4b2c2a6e93",
+                           "timestamp":  "2026-04-23T00:47:20.825885+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "3260d395-84ea-4053-963e-fb399babeeb2",
+                           "timestamp":  "2026-04-23T00:47:23.509531+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Rafael jugo (1,2) y (3,1)",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "d015772b-0dee-40e1-8893-ddcf947df1ba",
+                           "timestamp":  "2026-04-23T00:47:23.510031+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Rafael fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "16f073c1-de71-4649-8bb2-65b2e545c18c",
+                           "timestamp":  "2026-04-23T00:47:25.262578+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Jeshua",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "bdc7b90d-19c1-4442-958f-889b61a7a348",
+                           "timestamp":  "2026-04-23T00:47:25.263830+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Jeshua",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "15f02623-881a-4921-bf5d-544cb7d4698e",
+                           "timestamp":  "2026-04-23T00:47:31.142103+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (3,0) y (3,3)",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "1557a0c7-9953-4297-824d-04b75a1dacac",
+                           "timestamp":  "2026-04-23T00:47:31.142874+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Jeshua fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "7058bd5d-956d-4933-814e-2955e559762a",
+                           "timestamp":  "2026-04-23T00:47:32.894740+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "ce164212-9315-47f6-981e-f028ecdb2e4c",
+                           "timestamp":  "2026-04-23T00:47:32.895619+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "29468799-f6d1-4785-b6c8-8450d6cd0d05",
+                           "timestamp":  "2026-04-23T00:47:37.228664+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Rafael jugo (1,1) y (2,3)",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "416cf538-4ddc-4f28-9622-6d1d34254d1f",
+                           "timestamp":  "2026-04-23T00:47:37.229325+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Rafael fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "a6aa1a18-0b21-4bfa-9e9a-2d944e80cce9",
+                           "timestamp":  "2026-04-23T00:47:38.980404+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Jeshua",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "fb7c98e9-b7b9-41e1-86ad-757e5e063ccc",
+                           "timestamp":  "2026-04-23T00:47:38.981382+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Jeshua",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "c9ef37d7-bc21-4536-bff7-f76c22c4003e",
+                           "timestamp":  "2026-04-23T00:47:43.440950+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (2,3) y (0,2)",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "4634ea64-5606-4846-b984-e78c25171745",
+                           "timestamp":  "2026-04-23T00:47:43.441605+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Jeshua encontro pareja ðŸŒ y conserva el turno",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "21d5de5c-8cc9-44cf-9420-240c5636b11f",
+                           "timestamp":  "2026-04-23T00:47:43.441817+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Jeshua",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "43df9dbb-ebf0-4100-a22a-3970cf7f0557",
+                           "timestamp":  "2026-04-23T00:47:48.938079+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (1,2) y (3,1)",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "05713af5-c181-458a-9486-fea3fd0dfaf7",
+                           "timestamp":  "2026-04-23T00:47:48.938946+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Jeshua fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "f069a868-f680-489e-be9a-2dea95843e19",
+                           "timestamp":  "2026-04-23T00:47:50.690197+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "b6752b53-8115-4d60-8922-0016576f99dd",
+                           "timestamp":  "2026-04-23T00:47:50.690697+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "21af1698-e8dd-47a2-a399-e3c24a26fdab",
+                           "timestamp":  "2026-04-23T00:47:54.241080+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Rafael jugo (3,2) y (1,1)",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "e178affc-241f-4c5b-9af2-1d5d1df26e75",
+                           "timestamp":  "2026-04-23T00:47:54.241796+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Rafael encontro pareja ðŸ’ y conserva el turno",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "901441e7-b801-444c-8226-f0b0495d8790",
+                           "timestamp":  "2026-04-23T00:47:54.242073+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "7efc1a62-5acd-45ae-8c47-49af7eb31bbd",
+                           "timestamp":  "2026-04-23T00:47:59.053002+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Rafael jugo (0,0) y (1,3)",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "375c5548-16af-449d-b044-f8e1d0613b18",
+                           "timestamp":  "2026-04-23T00:47:59.053610+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Rafael encontro pareja ðŸ¥ y conserva el turno",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "e6106271-0b47-4399-ad4a-21733ec0d6dd",
+                           "timestamp":  "2026-04-23T00:47:59.053838+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "dbe3337f-6cf4-46dc-bf0a-7ffe6ed46c7b",
+                           "timestamp":  "2026-04-23T00:48:02.029510+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Rafael jugo (1,2) y (2,2)",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "44b6e83b-b8b9-443c-9d50-3ecec658fdaa",
+                           "timestamp":  "2026-04-23T00:48:02.030325+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Rafael fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "293104bb-e119-4535-9031-d791dbc17555",
+                           "timestamp":  "2026-04-23T00:48:03.788192+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Jeshua",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "11a593a3-824f-4ca6-a6ab-d05ef24c0961",
+                           "timestamp":  "2026-04-23T00:48:03.788678+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Jeshua",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "a3792bed-52aa-4601-be92-170f139f7039",
+                           "timestamp":  "2026-04-23T00:48:06.601667+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (3,1) y (3,3)",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "d1458dfb-97c8-4448-acb0-1d96fcbc6938",
+                           "timestamp":  "2026-04-23T00:48:06.602338+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Jeshua encontro pareja ðŸ¥¥ y conserva el turno",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "978718a8-b9c9-4c0c-8bed-f967687c9fb1",
+                           "timestamp":  "2026-04-23T00:48:06.602590+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Jeshua",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "7a46f927-4a9f-480e-ad4f-3e550cb0b10e",
+                           "timestamp":  "2026-04-23T00:48:09.882781+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (2,0) y (1,2)",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "869ff845-ba3a-4137-809a-7ad43fdd553e",
+                           "timestamp":  "2026-04-23T00:48:09.883751+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Jeshua encontro pareja ðŸ‡ y conserva el turno",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "55dc4163-faeb-44d7-a72b-63f0b66fea1b",
+                           "timestamp":  "2026-04-23T00:48:09.883973+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Jeshua",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "eafcd8ee-d01e-43cb-b5bc-538761f58398",
+                           "timestamp":  "2026-04-23T00:48:12.518854+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (1,0) y (3,0)",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "a69056ca-71c6-4400-bf53-6ac2e3a7abff",
+                           "timestamp":  "2026-04-23T00:48:12.519508+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Jeshua fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "72dab331-1889-4e02-aeba-696e295deaf7"
+                       },
+                       {
+                           "event_id":  "cc4652f8-4bca-42d0-b240-1f933e53a0f4",
+                           "timestamp":  "2026-04-23T00:48:14.272750+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "5c14b9a7-ade4-4fd2-bd06-08d2a273b7aa",
+                           "timestamp":  "2026-04-23T00:48:14.274558+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "995bd90b-b7c6-4901-8132-0be1ee468b38",
+                           "timestamp":  "2026-04-23T00:48:18.105571+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Rafael jugo (3,0) y (2,2)",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "dd69f4d6-0487-49a0-9f60-e5ef6b332b2d",
+                           "timestamp":  "2026-04-23T00:48:18.106305+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Rafael encontro pareja ðŸ y conserva el turno",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "d8e2d9ac-7fa8-4ae2-873e-5bfe91fc5bb7",
+                           "timestamp":  "2026-04-23T00:48:18.106580+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Rafael",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "83f3b986-9386-47ac-ac19-b6aca3bcf482",
+                           "timestamp":  "2026-04-23T00:48:19.648134+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Rafael jugo (0,3) y (1,0)",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "2fc243ef-ed52-4489-a2fb-d16413dead15",
+                           "timestamp":  "2026-04-23T00:48:19.648941+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Rafael encontro pareja ðŸ“ y conserva el turno",
+                           "actor_player_id":  "cdaf0e09-8761-446b-987d-c88db19a9aef"
+                       },
+                       {
+                           "event_id":  "79776bd1-951b-4386-8e61-ac11683f3939",
+                           "timestamp":  "2026-04-23T00:48:19.649230+00:00",
+                           "event_type":  "GAME_OVER",
+                           "message":  "Partida finalizada. Todas las parejas fueron encontradas.",
+                           "actor_player_id":  ""
+                       }
+                   ]
+    },
+    {
+        "match_id":  "53840641-688e-4e2e-8658-306bedfa7f87",
+        "id_ron":  "53840641-688e-4e2e-8658-306bedfa7f87",
+        "started_at":  "2026-04-23T23:13:22.506011+00:00",
+        "finished_at":  "2026-04-23T23:14:43.983147+00:00",
+        "rows":  4,
+        "cols":  4,
+        "tam_tab":  "4x4",
+        "niv_dif":  "bajo",
+        "status":  "FINISHED",
+        "winners":  [
+                        "Jeshua"
+                    ],
+        "players":  [
+                        {
+                            "player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d",
+                            "name":  "Rafael",
+                            "score":  1,
+                            "moves":  3,
+                            "pairs_found":  1,
+                            "total_response_time":  25.067894,
+                            "average_response_time":  8.355965,
+                            "response_times":  [
+                                                   15.569529,
+                                                   5.034968,
+                                                   4.463396
+                                               ],
+                            "is_current_turn":  false,
+                            "turn_history":  [
+                                                 {
+                                                     "first":  {
+                                                                   "row":  0,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  3,
+                                                                    "value":  "ðŸ¥"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  15.569529,
+                                                     "t_resp_ms":  15569.529,
+                                                     "lat_red_ms":  150.0,
+                                                     "timestamp":  "2026-04-23T23:13:38.080659+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  2,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸ‡"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  0,
+                                                                    "value":  "ðŸ‡"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  5.034968,
+                                                     "t_resp_ms":  5034.968,
+                                                     "lat_red_ms":  150.0,
+                                                     "timestamp":  "2026-04-23T23:14:06.965609+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ¥¥"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  2,
+                                                                    "value":  "ðŸ’"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  4.463396,
+                                                     "t_resp_ms":  4463.396,
+                                                     "lat_red_ms":  150.0,
+                                                     "timestamp":  "2026-04-23T23:14:11.429301+00:00"
+                                                 }
+                                             ]
+                        },
+                        {
+                            "player_id":  "32a93633-05ee-45db-be99-8c3416655109",
+                            "name":  "Uriel",
+                            "score":  0,
+                            "moves":  2,
+                            "pairs_found":  0,
+                            "total_response_time":  15.251164,
+                            "average_response_time":  7.625582,
+                            "response_times":  [
+                                                   5.312265,
+                                                   9.938898
+                                               ],
+                            "is_current_turn":  false,
+                            "turn_history":  [
+                                                 {
+                                                     "first":  {
+                                                                   "row":  0,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸŒ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  0,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸ“"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  5.312265,
+                                                     "t_resp_ms":  5312.265,
+                                                     "lat_red_ms":  217.55,
+                                                     "timestamp":  "2026-04-23T23:13:45.144008+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  0,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸŒ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸŽ"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  9.938898,
+                                                     "t_resp_ms":  9938.898,
+                                                     "lat_red_ms":  232.277,
+                                                     "timestamp":  "2026-04-23T23:14:23.119310+00:00"
+                                                 }
+                                             ]
+                        },
+                        {
+                            "player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889",
+                            "name":  "Abraham",
+                            "score":  3,
+                            "moves":  5,
+                            "pairs_found":  3,
+                            "total_response_time":  14.848038,
+                            "average_response_time":  2.969608,
+                            "response_times":  [
+                                                   5.405983,
+                                                   2.486991,
+                                                   2.045124,
+                                                   2.677833,
+                                                   2.232107
+                                               ],
+                            "is_current_turn":  false,
+                            "turn_history":  [
+                                                 {
+                                                     "first":  {
+                                                                   "row":  2,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ“"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  0,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸ“"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  5.405983,
+                                                     "t_resp_ms":  5405.983,
+                                                     "lat_red_ms":  133.383,
+                                                     "timestamp":  "2026-04-23T23:13:52.301322+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  2,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸ‡"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  2,
+                                                                    "value":  "ðŸ’"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  2.486991,
+                                                     "t_resp_ms":  2486.991,
+                                                     "lat_red_ms":  151.409,
+                                                     "timestamp":  "2026-04-23T23:13:54.786678+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  0,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸ"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  2.045124,
+                                                     "t_resp_ms":  2045.124,
+                                                     "lat_red_ms":  168.42,
+                                                     "timestamp":  "2026-04-23T23:14:26.914087+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ’"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  2,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸ’"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  2.677833,
+                                                     "t_resp_ms":  2677.833,
+                                                     "lat_red_ms":  173.033,
+                                                     "timestamp":  "2026-04-23T23:14:29.592351+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  3,
+                                                                   "value":  "ðŸ¥"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  0,
+                                                                    "value":  "ðŸŽ"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  2.232107,
+                                                     "t_resp_ms":  2232.107,
+                                                     "lat_red_ms":  175.137,
+                                                     "timestamp":  "2026-04-23T23:14:31.825329+00:00"
+                                                 }
+                                             ]
+                        },
+                        {
+                            "player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879",
+                            "name":  "Jeshua",
+                            "score":  4,
+                            "moves":  5,
+                            "pairs_found":  4,
+                            "total_response_time":  14.048398,
+                            "average_response_time":  2.80968,
+                            "response_times":  [
+                                                   3.64256,
+                                                   2.243027,
+                                                   3.02521,
+                                                   2.596685,
+                                                   2.540916
+                                               ],
+                            "is_current_turn":  false,
+                            "turn_history":  [
+                                                 {
+                                                     "first":  {
+                                                                   "row":  2,
+                                                                   "col":  0,
+                                                                   "value":  "ðŸ‡"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  1,
+                                                                    "value":  "ðŸ"
+                                                                },
+                                                     "matched":  false,
+                                                     "result":  "miss",
+                                                     "response_time":  3.64256,
+                                                     "t_resp_ms":  3642.56,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T23:14:00.180040+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  1,
+                                                                   "value":  "ðŸŽ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  3,
+                                                                    "col":  0,
+                                                                    "value":  "ðŸŽ"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  2.243027,
+                                                     "t_resp_ms":  2243.027,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T23:14:35.819194+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  2,
+                                                                   "col":  3,
+                                                                   "value":  "ðŸ¥"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  1,
+                                                                    "col":  3,
+                                                                    "value":  "ðŸ¥"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  3.02521,
+                                                     "t_resp_ms":  3025.21,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T23:14:38.844782+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  1,
+                                                                   "col":  2,
+                                                                   "value":  "ðŸ¥¥"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  0,
+                                                                    "col":  3,
+                                                                    "value":  "ðŸ¥¥"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  2.596685,
+                                                     "t_resp_ms":  2596.685,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T23:14:41.441796+00:00"
+                                                 },
+                                                 {
+                                                     "first":  {
+                                                                   "row":  3,
+                                                                   "col":  3,
+                                                                   "value":  "ðŸŒ"
+                                                               },
+                                                     "second":  {
+                                                                    "row":  0,
+                                                                    "col":  0,
+                                                                    "value":  "ðŸŒ"
+                                                                },
+                                                     "matched":  true,
+                                                     "result":  "hit",
+                                                     "response_time":  2.540916,
+                                                     "t_resp_ms":  2540.916,
+                                                     "lat_red_ms":  100.0,
+                                                     "timestamp":  "2026-04-23T23:14:43.983069+00:00"
+                                                 }
+                                             ]
+                        }
+                    ],
+        "round_metrics":  [
+                              {
+                                  "id_jug":  "45a063fd-5409-4c1c-97eb-cd04c837f11d",
+                                  "id_ses":  "sid-moaqlykc-hehm786bgg",
+                                  "id_ron":  "53840641-688e-4e2e-8658-306bedfa7f87",
+                                  "niv_dif":  "bajo",
+                                  "tam_tab":  "4x4",
+                                  "t_resp_ms":  8355.964,
+                                  "t_resp_ms_hist":  [
+                                                         15569.529,
+                                                         5034.968,
+                                                         4463.396
+                                                     ],
+                                  "t_ron_ms":  81481.799,
+                                  "tot_aci":  1,
+                                  "tot_err":  2,
+                                  "tasa_aci":  0.333333,
+                                  "racha_err":  1,
+                                  "racha_aci":  1,
+                                  "rec_par":  0.0,
+                                  "tot_ayu":  3,
+                                  "lat_red_ms":  150.0,
+                                  "idx_efi":  0.319757,
+                                  "desempeno":  "bajo"
+                              },
+                              {
+                                  "id_jug":  "32a93633-05ee-45db-be99-8c3416655109",
+                                  "id_ses":  "sid-moaqmwtd-v5hwwpm8d7",
+                                  "id_ron":  "53840641-688e-4e2e-8658-306bedfa7f87",
+                                  "niv_dif":  "bajo",
+                                  "tam_tab":  "4x4",
+                                  "t_resp_ms":  7625.582,
+                                  "t_resp_ms_hist":  [
+                                                         5312.265,
+                                                         9938.898
+                                                     ],
+                                  "t_ron_ms":  81481.799,
+                                  "tot_aci":  0,
+                                  "tot_err":  2,
+                                  "tasa_aci":  0.0,
+                                  "racha_err":  2,
+                                  "racha_aci":  0,
+                                  "rec_par":  0.0,
+                                  "tot_ayu":  3,
+                                  "lat_red_ms":  232.277,
+                                  "idx_efi":  0.103091,
+                                  "desempeno":  "bajo"
+                              },
+                              {
+                                  "id_jug":  "bd277619-643b-4994-81e4-42dcf2c4d889",
+                                  "id_ses":  "sid-moaqnftd-fxnmpe5hn1",
+                                  "id_ron":  "53840641-688e-4e2e-8658-306bedfa7f87",
+                                  "niv_dif":  "bajo",
+                                  "tam_tab":  "4x4",
+                                  "t_resp_ms":  2969.608,
+                                  "t_resp_ms_hist":  [
+                                                         5405.983,
+                                                         2486.991,
+                                                         2045.124,
+                                                         2677.833,
+                                                         2232.107
+                                                     ],
+                                  "t_ron_ms":  81481.799,
+                                  "tot_aci":  3,
+                                  "tot_err":  2,
+                                  "tasa_aci":  0.6,
+                                  "racha_err":  1,
+                                  "racha_aci":  2,
+                                  "rec_par":  0.333333,
+                                  "tot_ayu":  5,
+                                  "lat_red_ms":  175.137,
+                                  "idx_efi":  0.493091,
+                                  "desempeno":  "bajo"
+                              },
+                              {
+                                  "id_jug":  "3b1182a2-efd6-4aac-9af8-9d663b472879",
+                                  "id_ses":  "sid-moaqnn4d-a15ruoshdy",
+                                  "id_ron":  "53840641-688e-4e2e-8658-306bedfa7f87",
+                                  "niv_dif":  "bajo",
+                                  "tam_tab":  "4x4",
+                                  "t_resp_ms":  2809.68,
+                                  "t_resp_ms_hist":  [
+                                                         3642.56,
+                                                         2243.027,
+                                                         3025.21,
+                                                         2596.685,
+                                                         2540.916
+                                                     ],
+                                  "t_ron_ms":  81481.799,
+                                  "tot_aci":  4,
+                                  "tot_err":  1,
+                                  "tasa_aci":  0.8,
+                                  "racha_err":  1,
+                                  "racha_aci":  4,
+                                  "rec_par":  0.0,
+                                  "tot_ayu":  5,
+                                  "lat_red_ms":  100.0,
+                                  "idx_efi":  0.623091,
+                                  "desempeno":  "bajo"
+                              }
+                          ],
+        "events":  [
+                       {
+                           "event_id":  "cef69a21-17d5-4e41-bbb0-0b648433429c",
+                           "timestamp":  "2026-04-23T23:06:18.329686+00:00",
+                           "event_type":  "SYSTEM_MESSAGE",
+                           "message":  "Nueva partida creada. Esperando al menos 2 jugadores.",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "8f14ca9b-298b-4791-bb13-49ed1e1210fc",
+                           "timestamp":  "2026-04-23T23:10:21.585354+00:00",
+                           "event_type":  "FULL_STATE_SYNC",
+                           "message":  "Sincronizacion completa enviada a suscriptor",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "ff647d93-51e3-4157-a3fa-8f2c241a0514",
+                           "timestamp":  "2026-04-23T23:11:31.675462+00:00",
+                           "event_type":  "FULL_STATE_SYNC",
+                           "message":  "Sincronizacion completa enviada a suscriptor",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "7067fe32-7d0d-414b-ab33-302462d12f6d",
+                           "timestamp":  "2026-04-23T23:11:43.413599+00:00",
+                           "event_type":  "PLAYER_JOINED",
+                           "message":  "Jugador Evaristo se unio a la partida",
+                           "actor_player_id":  "aa5e1cd7-8123-4a4a-89ee-f4367b316b01"
+                       },
+                       {
+                           "event_id":  "83962b8d-eb82-4d11-b047-93539fc258c2",
+                           "timestamp":  "2026-04-23T23:11:57.505069+00:00",
+                           "event_type":  "PLAYER_JOINED",
+                           "message":  "Jugador Rafael se unio a la partida",
+                           "actor_player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d"
+                       },
+                       {
+                           "event_id":  "8e3d676b-0ef0-4bd7-b5a3-16e0e604e36a",
+                           "timestamp":  "2026-04-23T23:12:11.179690+00:00",
+                           "event_type":  "PLAYER_JOINED",
+                           "message":  "Jugador Uriel se unio a la partida",
+                           "actor_player_id":  "32a93633-05ee-45db-be99-8c3416655109"
+                       },
+                       {
+                           "event_id":  "a7f96657-864b-4971-8a87-4b4689331c95",
+                           "timestamp":  "2026-04-23T23:12:11.180009+00:00",
+                           "event_type":  "SYSTEM_MESSAGE",
+                           "message":  "Tamano de tablero ajustado a 6x6 para 3 jugadores en sala.",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "2c57b377-2211-4ef5-b73a-18c94860178b",
+                           "timestamp":  "2026-04-23T23:12:23.537617+00:00",
+                           "event_type":  "FULL_STATE_SYNC",
+                           "message":  "Sincronizacion completa enviada a suscriptor",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "e54050a9-0ff0-44c3-a535-36c4e65629a5",
+                           "timestamp":  "2026-04-23T23:12:25.366817+00:00",
+                           "event_type":  "PLAYER_JOINED",
+                           "message":  "Jugador Abraham se unio a la partida",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "f07f38e0-121b-43a4-9d09-3d1894d7b38b",
+                           "timestamp":  "2026-04-23T23:12:25.367220+00:00",
+                           "event_type":  "SYSTEM_MESSAGE",
+                           "message":  "Tamano de tablero ajustado a 8x8 para 4 jugadores en sala.",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "efa1c4b5-b658-4374-8f3d-135461ea1010",
+                           "timestamp":  "2026-04-23T23:13:03.186116+00:00",
+                           "event_type":  "SYSTEM_MESSAGE",
+                           "message":  "Tamano de tablero ajustado a 6x6 para 3 jugadores en sala.",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "3ed94f37-cdb5-4612-bbdd-8141ef5d2309",
+                           "timestamp":  "2026-04-23T23:13:03.186477+00:00",
+                           "event_type":  "SYSTEM_MESSAGE",
+                           "message":  "Admin removio al jugador Evaristo de la sala.",
+                           "actor_player_id":  "aa5e1cd7-8123-4a4a-89ee-f4367b316b01"
+                       },
+                       {
+                           "event_id":  "7f004e18-b5ed-4c00-b11a-b940b43b6870",
+                           "timestamp":  "2026-04-23T23:13:05.830210+00:00",
+                           "event_type":  "PLAYER_JOINED",
+                           "message":  "Jugador Jeshua se unio a la partida",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "8734c2ba-68f6-4f1d-9375-3c34b1e499ba",
+                           "timestamp":  "2026-04-23T23:13:05.830449+00:00",
+                           "event_type":  "SYSTEM_MESSAGE",
+                           "message":  "Tamano de tablero ajustado a 8x8 para 4 jugadores en sala.",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "35e381ff-1cb2-4275-b442-6c81be40a182",
+                           "timestamp":  "2026-04-23T23:13:18.781934+00:00",
+                           "event_type":  "SYSTEM_MESSAGE",
+                           "message":  "Admin fijo tablero manualmente en 4x4",
+                           "actor_player_id":  ""
+                       },
+                       {
+                           "event_id":  "0cd9a0bc-f894-4e85-ad30-615ca2d461f2",
+                           "timestamp":  "2026-04-23T23:13:22.506061+00:00",
+                           "event_type":  "GAME_STARTED",
+                           "message":  "Partida iniciada con 4 jugadores. Turno para Rafael",
+                           "actor_player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d"
+                       },
+                       {
+                           "event_id":  "0455c034-a28d-42ff-b1b7-51a6e36172c7",
+                           "timestamp":  "2026-04-23T23:13:22.506437+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno inicial para Rafael",
+                           "actor_player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d"
+                       },
+                       {
+                           "event_id":  "a23a9285-19a8-4b1c-be0d-3014a26902a6",
+                           "timestamp":  "2026-04-23T23:13:38.074608+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Rafael jugo (0,2) y (1,3)",
+                           "actor_player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d"
+                       },
+                       {
+                           "event_id":  "a4205bb9-442d-4fd5-8ea2-23514e64d354",
+                           "timestamp":  "2026-04-23T23:13:38.080699+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Rafael fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d"
+                       },
+                       {
+                           "event_id":  "4191aaf8-bf7e-423f-b97b-6887de925fc5",
+                           "timestamp":  "2026-04-23T23:13:39.831692+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Uriel",
+                           "actor_player_id":  "32a93633-05ee-45db-be99-8c3416655109"
+                       },
+                       {
+                           "event_id":  "e49e4a8b-8673-4b9b-825b-656a25c6c8e5",
+                           "timestamp":  "2026-04-23T23:13:39.831879+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Uriel",
+                           "actor_player_id":  "32a93633-05ee-45db-be99-8c3416655109"
+                       },
+                       {
+                           "event_id":  "54fd1660-c9a3-4448-9598-77a9feb97bac",
+                           "timestamp":  "2026-04-23T23:13:45.143621+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Uriel jugo (0,0) y (0,1)",
+                           "actor_player_id":  "32a93633-05ee-45db-be99-8c3416655109"
+                       },
+                       {
+                           "event_id":  "2324f874-7132-4afa-aedd-3448d3896fef",
+                           "timestamp":  "2026-04-23T23:13:45.144053+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Uriel fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "32a93633-05ee-45db-be99-8c3416655109"
+                       },
+                       {
+                           "event_id":  "bc17549a-410b-4637-b7da-79573dadb0bc",
+                           "timestamp":  "2026-04-23T23:13:46.894537+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Abraham",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "3d821531-747b-4c37-a6f7-f966679967b7",
+                           "timestamp":  "2026-04-23T23:13:46.895027+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Abraham",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "d64cf565-4e17-4ffd-be8d-7490ac63f517",
+                           "timestamp":  "2026-04-23T23:13:52.300517+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Abraham jugo (2,2) y (0,1)",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "e7bc7b64-932f-4d8d-ac0a-fcfe9e4efc06",
+                           "timestamp":  "2026-04-23T23:13:52.301372+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Abraham encontro pareja ðŸ“ y conserva el turno",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "d8fe1319-62bd-4663-9393-9fc63601f2ba",
+                           "timestamp":  "2026-04-23T23:13:52.301473+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Abraham",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "f4d41516-eabd-48fe-8bd5-0e62d84b0972",
+                           "timestamp":  "2026-04-23T23:13:54.786364+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Abraham jugo (2,0) y (3,2)",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "f616c196-2b4c-4016-879c-3b18bb08a4e2",
+                           "timestamp":  "2026-04-23T23:13:54.786767+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Abraham fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "7c8cc4d9-d2c7-4675-a6c4-ed2fd9722bce",
+                           "timestamp":  "2026-04-23T23:13:56.537370+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Jeshua",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "0c87796d-d05d-43a9-a698-1c652ee03ba7",
+                           "timestamp":  "2026-04-23T23:13:56.537697+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Jeshua",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "0ef7bf7f-e917-4c50-889f-0182263efc7d",
+                           "timestamp":  "2026-04-23T23:14:00.179852+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (2,0) y (1,1)",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "d3b3b8f8-437e-48cb-848e-889a30618f03",
+                           "timestamp":  "2026-04-23T23:14:00.180064+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Jeshua fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "dd5995f7-638e-42b7-84d2-95fdddec140a",
+                           "timestamp":  "2026-04-23T23:14:01.930449+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Rafael",
+                           "actor_player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d"
+                       },
+                       {
+                           "event_id":  "282a2a22-0e62-4493-a5ae-2f07bc0ebfd2",
+                           "timestamp":  "2026-04-23T23:14:01.930815+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Rafael",
+                           "actor_player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d"
+                       },
+                       {
+                           "event_id":  "bc6b3ae1-35c7-421d-bf9d-3b4385a7dac5",
+                           "timestamp":  "2026-04-23T23:14:06.965389+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Rafael jugo (2,0) y (1,0)",
+                           "actor_player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d"
+                       },
+                       {
+                           "event_id":  "6bbe84ae-2e7b-4833-89a9-179d99ae258e",
+                           "timestamp":  "2026-04-23T23:14:06.965641+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Rafael encontro pareja ðŸ‡ y conserva el turno",
+                           "actor_player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d"
+                       },
+                       {
+                           "event_id":  "591c3e3a-ffb2-4aaf-838a-d06cd8539b98",
+                           "timestamp":  "2026-04-23T23:14:06.965708+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Rafael",
+                           "actor_player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d"
+                       },
+                       {
+                           "event_id":  "a8bef34f-2691-4b4f-95c6-8b4c8af8801e",
+                           "timestamp":  "2026-04-23T23:14:11.429107+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Rafael jugo (1,2) y (3,2)",
+                           "actor_player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d"
+                       },
+                       {
+                           "event_id":  "a7d04f24-7adb-4538-b6ec-d37de68fee57",
+                           "timestamp":  "2026-04-23T23:14:11.429324+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Rafael fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "45a063fd-5409-4c1c-97eb-cd04c837f11d"
+                       },
+                       {
+                           "event_id":  "09b271d4-281d-4cc4-a487-32c0990d1eb1",
+                           "timestamp":  "2026-04-23T23:14:13.179772+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Uriel",
+                           "actor_player_id":  "32a93633-05ee-45db-be99-8c3416655109"
+                       },
+                       {
+                           "event_id":  "9fb5023f-c26c-442f-ba46-6598a9c0dd8d",
+                           "timestamp":  "2026-04-23T23:14:13.180093+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Uriel",
+                           "actor_player_id":  "32a93633-05ee-45db-be99-8c3416655109"
+                       },
+                       {
+                           "event_id":  "75cb519e-ddd7-4236-9b3f-18eaeef14139",
+                           "timestamp":  "2026-04-23T23:14:23.118648+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Uriel jugo (0,0) y (3,1)",
+                           "actor_player_id":  "32a93633-05ee-45db-be99-8c3416655109"
+                       },
+                       {
+                           "event_id":  "6a4c2b4d-82fb-4070-9d37-2fffaaff94ad",
+                           "timestamp":  "2026-04-23T23:14:23.119360+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Uriel fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "32a93633-05ee-45db-be99-8c3416655109"
+                       },
+                       {
+                           "event_id":  "7ce38d03-4bc6-4ff5-99da-19f6cf54cd31",
+                           "timestamp":  "2026-04-23T23:14:24.868789+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Abraham",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "2a4cd370-e0e3-4a4b-b87f-6fe16998d2bb",
+                           "timestamp":  "2026-04-23T23:14:24.869388+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Abraham",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "27a8d8b5-c572-4282-9183-8929962f702d",
+                           "timestamp":  "2026-04-23T23:14:26.913890+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Abraham jugo (0,2) y (1,1)",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "5eb82d56-ff3e-4e29-bc1d-f9bb5ea452c7",
+                           "timestamp":  "2026-04-23T23:14:26.914110+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Abraham encontro pareja ðŸ y conserva el turno",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "c6ae2344-3085-4524-973f-9202efb2b858",
+                           "timestamp":  "2026-04-23T23:14:26.914158+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Abraham",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "41a5efae-31f9-460f-a7e6-f4bfb1dde796",
+                           "timestamp":  "2026-04-23T23:14:29.592009+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Abraham jugo (3,2) y (2,1)",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "101ce269-424a-4fc9-93b7-90559c9a590d",
+                           "timestamp":  "2026-04-23T23:14:29.592509+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Abraham encontro pareja ðŸ’ y conserva el turno",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "17af3c78-1240-464e-aea5-55ea1fb8d73b",
+                           "timestamp":  "2026-04-23T23:14:29.592613+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Abraham",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "cdf41c98-a5f6-48ce-a634-4b4ea5d9fd1d",
+                           "timestamp":  "2026-04-23T23:14:31.824935+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Abraham jugo (1,3) y (3,0)",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "7e1864f3-7c8f-4568-b30a-8b4fe5f06f9a",
+                           "timestamp":  "2026-04-23T23:14:31.825377+00:00",
+                           "event_type":  "MISS_REVEALED",
+                           "message":  "Abraham fallo. Las cartas se ocultaran en 1.75s",
+                           "actor_player_id":  "bd277619-643b-4994-81e4-42dcf2c4d889"
+                       },
+                       {
+                           "event_id":  "6bed65cc-f9c4-4e6a-bb76-d3c80ce98fc0",
+                           "timestamp":  "2026-04-23T23:14:33.575885+00:00",
+                           "event_type":  "MISS_HIDDEN",
+                           "message":  "Cartas ocultas nuevamente. Turno para Jeshua",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "c1bb2807-59f5-4844-ab07-d9913a4ba273",
+                           "timestamp":  "2026-04-23T23:14:33.576385+00:00",
+                           "event_type":  "TURN_CHANGED",
+                           "message":  "Turno cambiado a Jeshua",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "de933748-db1b-4aa6-8045-7e8a9f7ca781",
+                           "timestamp":  "2026-04-23T23:14:35.818898+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (3,1) y (3,0)",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "57d67177-398d-480a-850f-dde19b348404",
+                           "timestamp":  "2026-04-23T23:14:35.819229+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Jeshua encontro pareja ðŸŽ y conserva el turno",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "c659a64a-d1f4-42f2-ba23-708ad409adb1",
+                           "timestamp":  "2026-04-23T23:14:35.819310+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Jeshua",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "273a9424-26f0-45bb-ae4a-4e55b3dfff7d",
+                           "timestamp":  "2026-04-23T23:14:38.844516+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (2,3) y (1,3)",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "a36b3cb4-6891-4fcf-9db6-ab7190d97ed3",
+                           "timestamp":  "2026-04-23T23:14:38.844809+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Jeshua encontro pareja ðŸ¥ y conserva el turno",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "0bced7ce-d288-4edc-96bd-5aab6ed941b4",
+                           "timestamp":  "2026-04-23T23:14:38.844867+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Jeshua",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "973d1e0a-b077-486b-b683-e32a040c6209",
+                           "timestamp":  "2026-04-23T23:14:41.441562+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (1,2) y (0,3)",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "0382c74a-ee2f-47ce-b5a5-9a51107de0c2",
+                           "timestamp":  "2026-04-23T23:14:41.441830+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Jeshua encontro pareja ðŸ¥¥ y conserva el turno",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "edaf510d-3499-4344-817e-bb413d611d1f",
+                           "timestamp":  "2026-04-23T23:14:41.441888+00:00",
+                           "event_type":  "STATS_UPDATED",
+                           "message":  "Estadisticas actualizadas para Jeshua",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "892e982a-77cb-484b-b7e8-39d979d60a34",
+                           "timestamp":  "2026-04-23T23:14:43.982815+00:00",
+                           "event_type":  "TURN_PLAYED",
+                           "message":  "Jeshua jugo (3,3) y (0,0)",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "d87f4cff-ef2d-4e0f-8ecf-2771bb1c1ac1",
+                           "timestamp":  "2026-04-23T23:14:43.983101+00:00",
+                           "event_type":  "MATCH_FOUND",
+                           "message":  "Jeshua encontro pareja ðŸŒ y conserva el turno",
+                           "actor_player_id":  "3b1182a2-efd6-4aac-9af8-9d663b472879"
+                       },
+                       {
+                           "event_id":  "3af3c648-f2f6-4f20-a734-d3decbc1c4a3",
+                           "timestamp":  "2026-04-23T23:14:43.983188+00:00",
+                           "event_type":  "GAME_OVER",
+                           "message":  "Partida finalizada. Todas las parejas fueron encontradas.",
+                           "actor_player_id":  ""
+                       }
+                   ]
+    }
+]

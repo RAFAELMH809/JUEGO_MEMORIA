@@ -1012,6 +1012,11 @@ class GameEngine:
             total_hits = player.pairs_found
             total_errors = max(0, total_moves - total_hits)
             tasa_aci = (total_hits / total_moves) if total_moves else 0.0
+            turn_response_ms = [
+                turn.get("t_resp_ms", round(turn.get("response_time", 0.0) * 1000.0, 3))
+                for turn in player.turn_history
+            ]
+            avg_t_resp_ms = mean(turn_response_ms) if turn_response_ms else 0.0
             max_racha_aci, max_racha_err = self._compute_streaks_locked(player.turn_history)
             rec_par = self._compute_rec_par_locked(player.turn_history)
             idx_efi = self._compute_idx_efi_locked(
@@ -1035,10 +1040,8 @@ class GameEngine:
                     "id_ron": self._match_id,
                     "niv_dif": self._difficulty_level_locked(),
                     "tam_tab": f"{self._board_rows}x{self._board_cols}",
-                    "t_resp_ms": [
-                        turn.get("t_resp_ms", round(turn.get("response_time", 0.0) * 1000.0, 3))
-                        for turn in player.turn_history
-                    ],
+                    "t_resp_ms": round(avg_t_resp_ms, 3),
+                    "t_resp_ms_hist": turn_response_ms,
                     "t_ron_ms": t_ron_ms,
                     "tot_aci": total_hits,
                     "tot_err": total_errors,

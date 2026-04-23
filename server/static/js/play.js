@@ -1,3 +1,13 @@
+function buildSessionId() {
+  if (globalThis.crypto && typeof globalThis.crypto.randomUUID === "function") {
+    return globalThis.crypto.randomUUID();
+  }
+
+  const randomPart = Math.random().toString(36).slice(2, 12);
+  const timePart = Date.now().toString(36);
+  return `sid-${timePart}-${randomPart}`;
+}
+
 const state = {
   snapshot: globalThis.__INITIAL_SNAPSHOT__ || null,
   events: [],
@@ -6,7 +16,7 @@ const state = {
   winnerShownForMatch: "",
   playerId: localStorage.getItem("memory_player_id") || "",
   playerName: localStorage.getItem("memory_player_name") || "",
-  sessionId: localStorage.getItem("memory_session_id") || crypto.randomUUID(),
+  sessionId: localStorage.getItem("memory_session_id") || buildSessionId(),
   latencySamples: []
 };
 
